@@ -1,0 +1,17 @@
+.h1 {
+    text-align: center;
+    font-size: 50px;
+    font-family: Avenir;
+  }
+  
+  .descriptionText {
+    text-align: center;
+    font-size: 30px;
+    font-family: Avenir;
+  }
+  
+  .getStartedButton {
+    text-align: center;
+    font-size: 22px;
+    font-family: Avenir;
+  }
