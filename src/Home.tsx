@@ -9,7 +9,7 @@ export function Home() {
             <h1 className="h1">Guia</h1>
         
         <p className="descriptionText">
-         The better way to travel. Travel more, plan less.
+         The better way to travel. Travel more, plan less!
         </p>
         
        <div className="getStartedButton">
