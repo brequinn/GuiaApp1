@@ -1,4 +1,4 @@
-# Guia
+# Guia - travel more, plan less.
 
 Guia is a marketplace that connects travel creators and planners with travelers. Receive personalized recommendations or itineraries from travel experts for your destination
 
