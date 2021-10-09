@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'antd/dist/antd.css';
-import { BrowserRouter, Route, Switch, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, useLocation } from 'react-router-dom';
 
 ReactDOM.render(
   <BrowserRouter>

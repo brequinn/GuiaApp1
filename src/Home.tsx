@@ -14,7 +14,7 @@ export function Home() {
         
        <div className="getStartedButton">
        <Link to="/login">
-      <Button renderAs="button">
+      <Button>
     <span>Login or sign up</span>
   </Button>
 </Link> 
