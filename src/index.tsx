@@ -1,15 +1,31 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import {App} from './App';
 import reportWebVitals from './reportWebVitals';
+import { getAuth } from 'firebase/auth'; // Firebase v9+
+import { getDatabase } from 'firebase/database'; // Firebase v9+
+import { FirebaseAppProvider, AuthProvider, useFirebaseApp } from 'reactfire';
 import 'antd/dist/antd.css';
+import { initializeApp } from 'firebase/app';
 import { BrowserRouter, Route, Switch, useLocation } from 'react-router-dom';
 
+const firebaseConfig = {
+  apiKey: "AIzaSyCNjEmxNEcqTfytXFkogstdxxKP_rejONs",
+  authDomain: "guiaapp-9c636.firebaseapp.com",
+  projectId: "guiaapp-9c636",
+  storageBucket: "guiaapp-9c636.appspot.com",
+  messagingSenderId: "932046445247",
+  appId: "1:932046445247:web:7c820a6d040f53ebc0c40a"
+};
+
+
 ReactDOM.render(
-  <BrowserRouter>
+ 
+  <FirebaseAppProvider firebaseConfig={firebaseConfig}>
     <App />
-    </BrowserRouter>,
+    </FirebaseAppProvider>
+ ,
   document.getElementById('root')
 );
 
