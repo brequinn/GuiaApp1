@@ -106,6 +106,23 @@ export function Header() {
           </Space>
         </div>
       ) : ( */}
+       <Button
+          type="primary"
+          size="large"
+          style={{
+            marginBottom: 16,
+            marginRight: -1200,
+            top: 8,
+            borderRadius: 200,
+            marginLeft: "auto",
+            color: "white",
+            border: "none",
+            padding: "8px 28px",
+            backgroundColor: "#599B67",
+          }}
+        >
+          Become a guide
+        </Button>
         <Button
           type="primary"
           size="large"
