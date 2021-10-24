@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+  }
+  
+  main {
+    margin: 16px;
+  }
+  
+  .navbar {
+    display: flex;
+    align-items: center;
+    background: #1d1751;
+    color: white;
+    font-family: Philosopher;
+    font-weight: 300;
+  }
+  
+  .navbar__title {
+    margin-right: auto;
+    font-size: 150%;
+    padding: 12px 16px;
+    font-size: 30px;
+  }
+  
+  .navbar__item {
+    padding: 16px 16px;
+    cursor: pointer;
+    font-family: Philosopher;
+    vertical-align: middle;
+  }
+
+  .h1 {
+    color: #599B67;
+    font-family: Philosopher-Regular;
+  }
