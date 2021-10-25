@@ -4,6 +4,7 @@ import React from 'react';
 import "./css/Home.css";
 import firebase from 'firebase/compat/app';
 import { Header } from './Header';
+import { PopularDestinations } from './PopularDestinations';
 import { HomeSearchBar } from './HomeSearchBar';
 
 export function Home() {
@@ -40,6 +41,7 @@ export function Home() {
        <div className="getStartedButton">
       
         </div>
+        <PopularDestinations/>
       </div>
       </>
     );
