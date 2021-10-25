@@ -7,18 +7,30 @@ import { getAuth } from 'firebase/auth'; // Firebase v9+
 import { getDatabase } from 'firebase/database'; // Firebase v9+
 import { FirebaseAppProvider, AuthProvider, useFirebaseApp } from 'reactfire';
 import 'antd/dist/antd.css';
-// import firebase from "firebase";
 import { initializeApp } from 'firebase/app';
+import firebase from 'firebase/compat/app';
 import { BrowserRouter, Route, Switch, useLocation } from 'react-router-dom';
 import "antd/dist/antd.css";
 
+const firebaseConfig = {
+  apiKey: "AIzaSyCNjEmxNEcqTfytXFkogstdxxKP_rejONs",
+  authDomain: "guiaapp-9c636.firebaseapp.com",
+  projectId: "guiaapp-9c636",
+  storageBucket: "guiaapp-9c636.appspot.com",
+  messagingSenderId: "932046445247",
+  appId: "1:932046445247:web:7c820a6d040f53ebc0c40a"
+};
+
 
 ReactDOM.render(
-  <React.StrictMode>
+ <React.StrictMode>
+   <FirebaseAppProvider firebaseConfig={firebaseConfig}>
     <App />
+    </FirebaseAppProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

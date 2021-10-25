@@ -15,18 +15,24 @@ const firebaseConfig = {
   appId: "1:932046445247:web:7c820a6d040f53ebc0c40a"
 };
 
-firebase.initializeApp(firebaseConfig);
-
 export function App() {
+  firebase.initializeApp(firebaseConfig);
+  const app = useFirebaseApp();
+  const auth = getAuth(app);
+
   if (typeof window === "undefined") {
     return null;
   }
-
   return (
     <FirebaseAppProvider firebaseConfig={firebaseConfig}>
+   <AuthProvider sdk={auth}>
+    
+      
       <React.Suspense fallback={<Loading />}>
         <AppRoutes />
       </React.Suspense>
+
+    </AuthProvider>
     </FirebaseAppProvider>
   );
 }
