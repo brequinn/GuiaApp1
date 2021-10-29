@@ -4,30 +4,44 @@ import "./css/index.css";
 import firebase from 'firebase/compat/app';
 import { Avatar, Dropdown, Menu, Space, Button } from "antd";
 import { UserOutlined, DownOutlined } from "@ant-design/icons";
-import { useAuth } from "reactfire";
+import { useAuth, useUser } from "reactfire";
 import { Link } from "react-router-dom";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
-// const googleProvider = new firebase.auth.GoogleAuthProvider();
-
-
 export function Header() {
   const auth = useAuth();
+  const user = auth.currentUser;
 
   function googleLogin() {
-    const googleProvider = new GoogleAuthProvider();
+   
+  const googleProvider = new GoogleAuthProvider();
   googleProvider.addScope("profile");
   googleProvider.addScope("email");
     const auth = getAuth();
 signInWithPopup(auth, googleProvider)
   .then((result) => {
-      const credential = GoogleAuthProvider.credentialFromResult(result) as firebase.auth.OAuthCredential; 
+    const credential = GoogleAuthProvider.credentialFromResult(result) as firebase.auth.OAuthCredential; 
     const token = credential.accessToken;
     // The signed-in user info.
     const user = result.user;
+    // auth.updateCurrentUser(user);
+    console.log("this is my user uid!!! " + user);
       });
     }
   
+    function Logout() {
+      auth.signOut();
+    } 
+
+    useEffect(() => {
+      auth.onIdTokenChanged(function (user) {
+   
+      });
+      console.log("this is my user uid " + user);
+   
+    });
+    
+
   return (
     <div
       style={{
@@ -63,7 +77,7 @@ signInWithPopup(auth, googleProvider)
         </Space>
       </Link>
 
-
+      { user ?
         <div style={{ marginLeft: "auto" }}>
           <Space direction="horizontal" size="middle">
             <Dropdown
@@ -85,7 +99,7 @@ signInWithPopup(auth, googleProvider)
                   </Menu.Item> 
 
                   <Menu.Item>
-                    <a>Logout</a>
+                  <a onClick={Logout}>Logout</a>
                   </Menu.Item>
                 </Menu>
               }
@@ -98,25 +112,8 @@ signInWithPopup(auth, googleProvider)
               </a>
             </Dropdown>
           </Space>
-        </div>
-  
-       <Button
-          type="primary"
-          size="large"
-          style={{
-            marginBottom: 16,
-            marginRight: -1200,
-            top: 8,
-            borderRadius: 200,
-            marginLeft: "auto",
-            color: "white",
-            border: "none",
-            padding: "8px 28px",
-            backgroundColor: "#599B67",
-          }}
-        >
-          Become a guide
-        </Button>
+        </div>   
+       :
         <Button
           onClick={googleLogin}
           type="primary"
@@ -135,7 +132,7 @@ signInWithPopup(auth, googleProvider)
         >
           Login
         </Button>
-      )
+        }     
     </div>
   );
 }
