@@ -76,6 +76,23 @@ signInWithPopup(auth, googleProvider)
           </span>
         </Space>
       </Link>
+      <Link to="/MyTrips">
+        <Space direction="horizontal" size="middle">
+          <span
+            
+            style={{
+             
+            color: '#599B67',
+             fontSize: "35px",
+              marginRight: 20,
+              marginLeft: 50,
+            
+            }}
+          >
+            My Trips
+          </span>
+        </Space>
+      </Link>
 
       { user ?
         <div style={{ marginLeft: "auto" }}>

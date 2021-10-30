@@ -21,6 +21,11 @@ const menu = (
         London  
       </a>
     </Menu.Item>
+    <Menu.Item>
+      <a href="javascript:void(0)">
+        Berlin
+      </a>
+    </Menu.Item>
   </Menu>
 );
 
@@ -37,12 +42,10 @@ const suffix = (
 
 return (
 
-
-
-  <Space direction="vertical">
-    <Dropdown overlay={menu}>
+  <Space direction="vertical" >
+    <Dropdown overlay={menu} >
       <Button>
-       Select your destination <DownOutlined />
+    Where are you traveling to? <DownOutlined />
       </Button>
     </Dropdown>
   </Space>

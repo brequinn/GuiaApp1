@@ -4,7 +4,15 @@ import firebase from "firebase/compat/app";
 import { useUser } from 'reactfire';
 import "firebase/firestore";
 import { Home } from './Home';
-import { BrowserRouter, Route, Redirect } from 'react-router-dom';
+import { MyTrips } from './MyTrips';
+import {
+    BrowserRouter,
+    Route,
+    useParams,
+    Switch,
+    useLocation,
+    Redirect,
+  } from "react-router-dom";
 
 export function AppRoutes() {
 // const user = useUser();
@@ -16,9 +24,13 @@ export function AppRoutes() {
 
 return (
             <BrowserRouter>
+            <Route>
                 
-                <Route path="*" component={Home} exact /> 
-            </BrowserRouter>   
+                <Route path="/" component={Home} exact /> 
+                <Route path="/MyTrips" component={MyTrips} />
+                </Route>
+            </BrowserRouter>  
+             
 );
 }       
 export default AppRoutes;
