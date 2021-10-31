@@ -4,6 +4,8 @@ import firebase from "firebase/compat/app";
 import { useUser } from 'reactfire';
 import "firebase/firestore";
 import { Home } from './Home';
+import { GuideResults } from './GuideResults';
+import { GuideDetail } from './GuideDetail';
 import { MyTrips } from './MyTrips';
 import {
     BrowserRouter,
@@ -28,6 +30,8 @@ return (
                 
                 <Route path="/" component={Home} exact /> 
                 <Route path="/MyTrips" component={MyTrips} />
+                <Route path="/searchResults" component={GuideResults} />
+                <Route path="/guideDetail" component={GuideDetail} />
                 </Route>
             </BrowserRouter>  
              

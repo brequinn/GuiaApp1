@@ -1,10 +1,12 @@
 import { Input, Space, Dropdown, Button, Menu } from 'antd';
 import { AudioOutlined, DownOutlined } from '@ant-design/icons';
+import { useHistory } from 'react-router-dom';
 
 
 export function HomeSearchBar() {
-   
 
+  const history = useHistory();
+  const clickResult = () => history.push('/searchResults');
 const { Search } = Input;
 const menu = (
   <Menu>
@@ -12,17 +14,17 @@ const menu = (
       <a href="javascript:void(0)">Edit</a>
     </Menu.Item> */}
     <Menu.Item>
-      <a href="javascript:void(0)">
+      <a onClick={clickResult} href="javascript:void(0)">
         New York City
       </a>
     </Menu.Item>
     <Menu.Item>
-      <a href="javascript:void(0)">
+      <a onClick={clickResult} href="javascript:void(0)">
         London  
       </a>
     </Menu.Item>
     <Menu.Item>
-      <a href="javascript:void(0)">
+      <a onClick={clickResult} href="javascript:void(0)">
         Berlin
       </a>
     </Menu.Item>

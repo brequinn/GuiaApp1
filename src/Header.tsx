@@ -6,7 +6,8 @@ import { Avatar, Dropdown, Menu, Space, Button } from "antd";
 import { UserOutlined, DownOutlined } from "@ant-design/icons";
 import { useAuth, useUser } from "reactfire";
 import { Link } from "react-router-dom";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export function Header() {
   const auth = useAuth();
@@ -25,8 +26,19 @@ signInWithPopup(auth, googleProvider)
     // The signed-in user info.
     const user = result.user;
     // auth.updateCurrentUser(user);
-    console.log("this is my user uid!!! " + user);
+    console.log("this is my user uid!!!");
       });
+      const db = firebase.firestore();
+      const user1 = auth.currentUser;
+      if (user1) {
+      db.collection("users").doc(user1.uid).set({
+        uid: user1.uid,
+        email: user1.email,
+        name: user1.displayName,
+        photoURL: user1.photoURL,
+        lastLoggedIn: firebase.firestore.FieldValue.serverTimestamp(),
+      });
+    }
     }
   
     function Logout() {
