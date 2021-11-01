@@ -21,9 +21,10 @@ import {
   
   export function GuideCard( {guide} : {guide:any}) {
 
-    const params = useParams();
     const history = useHistory();
-    const clickGuideResult = () => history.push('/guideDetail');
+  const clickGuideResult = () => history.push('/guideDetail');
+    const params = useParams();
+ 
 
     return (
       <Col

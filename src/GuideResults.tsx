@@ -25,11 +25,13 @@ const history = useHistory();
     const db = getFirestore();
     const q = query(collection(db, "guides"));
     const querySnapshot = await getDocs(q);
+    let result = [''];
     querySnapshot.forEach((doc) => {
       console.log(doc.id, " => ", doc.data());
+      setData(result);
     });
-        setData(data1);
-        console.log("this is what was returned from the db " + data1);
+    
+        console.log("this is what was returned from the db " + result);
 
   }
 
