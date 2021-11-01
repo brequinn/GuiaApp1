@@ -14,21 +14,17 @@ import {
   import "firebase/firestore";
   import firebase from "firebase/compat/app";
   import firestore from "./firestore";
-  import { MoreOutlined, CaretRightOutlined } from "@ant-design/icons";
-  import { Link } from "react-router-dom";
-  import image1 from "./images/background1.jpg";
-  import image2 from "./images/background2.jpg";
   import { Loading } from "./Loading";
   import { useHistory } from 'react-router-dom';
   import "./css/ImageTile.css";
 
   
-  export function GuideCard({ guide }) {
+  export function GuideCard( {guide} : {guide:any}) {
+
     const params = useParams();
     const history = useHistory();
     const clickGuideResult = () => history.push('/guideDetail');
 
-  
     return (
       <Col
         xs={24}
@@ -82,7 +78,8 @@ import {
                     marginBottom: "0",
                   }}
                 >
-                  {guide.guideName}
+                //   {guide.guideName}
+             
                   
                 </h3>
                 <h4
