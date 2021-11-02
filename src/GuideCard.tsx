@@ -9,7 +9,7 @@ import {
     Dropdown,
     message,
   } from "antd";
-  import React, { Component } from "react";
+  import React, { Component, useEffect } from "react";
   import { useParams } from "react-router-dom";
   import "firebase/firestore";
   import firebase from "firebase/compat/app";
@@ -21,10 +21,15 @@ import {
   
   export function GuideCard( {guide} : {guide:any}) {
 
+    useEffect(() => {
+      console.log("guide =" + guide)
+  }, []);
+
     const history = useHistory();
   const clickGuideResult = () => history.push('/guideDetail');
     const params = useParams();
  
+
 
     return (
       <Col
@@ -40,7 +45,7 @@ import {
           <div
             onClick={clickGuideResult} 
             style={{
-              background: `linear-gradient(180deg, rgba(2, 9, 19, 0) 0%, rgba(2, 9, 19, 0.9) 100%), url(http://static4.businessinsider.com/image/559db20cecad04d238ab062d-400-300/getting-lost-around-havana-was-our-favorite-part-business-insiders-senior-video-producer-graham-flanagan-checked-a-map-while-front-end-developer-tyler-greenfield-wearing-a-matching-hat-spoke-to-a-cuban-man-on-the-street-the-local-was-trying-to-sell-them-black-market-currency.jpg)`,
+              background: `linear-gradient(180deg, rgba(2, 9, 19, 0) 0%, rgba(2, 9, 19, 0.9) 100%), url(${guide.photoURL})`,
               borderRadius: "10px 10px 0 0",
               paddingBottom: "48%",
               backgroundSize: "cover",
@@ -79,8 +84,8 @@ import {
                     marginBottom: "0",
                   }}
                 >
-                //   {guide.guideName}
-             
+                  {guide.guideName}
+                  
                   
                 </h3>
                 <h4

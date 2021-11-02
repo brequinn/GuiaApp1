@@ -25,12 +25,9 @@ const history = useHistory();
     const db = getFirestore();
     const q = query(collection(db, "guides"));
     const querySnapshot = await getDocs(q);
-    let result = [''];
-    querySnapshot.forEach((doc) => {
-      console.log(doc.id, " => ", doc.data());
-      setData(result);
-    });
-    
+    const result = querySnapshot.docs.map(doc => doc.data());
+    setData(result);
+  
         console.log("this is what was returned from the db " + result);
 
   }
@@ -43,14 +40,14 @@ const history = useHistory();
   return (  
     <>
     <Header />
-    <p onClick={clickGuideDetail}>profile</p>
 
-{data1.map((guide: { id: any; }) => (
+{data1.map((guide: any) => (
         <GuideCard
           guide={guide}
-          key={guide.id}
+          key={guide}
         />
       ))}   
+    
     </>
   );
 }
