@@ -10,11 +10,10 @@ import {
     message,
   } from "antd";
   import React, { Component, useEffect } from "react";
-  import { useParams } from "react-router-dom";
   import "firebase/firestore";
   import firebase from "firebase/compat/app";
+  import { useParams, Link } from "react-router-dom";
   import firestore from "./firestore";
-  import { Loading } from "./Loading";
   import { useHistory } from 'react-router-dom';
   import "./css/ImageTile.css";
 
@@ -22,15 +21,12 @@ import {
   export function GuideCard( {guide} : {guide:any}) {
 
     useEffect(() => {
-      console.log("guide =" + guide)
+      console.log("this is the name " + guide.guideName);
   }, []);
 
-    const history = useHistory();
-  const clickGuideResult = () => history.push('/guideDetail');
-    const params = useParams();
- 
-
-
+  const params = useParams();
+  const history = useHistory();
+   
     return (
       <Col
         xs={24}
@@ -39,11 +35,12 @@ import {
         lg={6}
         style={{
           marginBottom: 40,
+          marginLeft: 150,
+          marginTop: 50
         }}
       >
-        {/* <Link to={`/dashboard/${channel.id}/scheduler`}> */}
+        <Link to={`/guide/${guide.IDtag}`}>
           <div
-            onClick={clickGuideResult} 
             style={{
               background: `linear-gradient(180deg, rgba(2, 9, 19, 0) 0%, rgba(2, 9, 19, 0.9) 100%), url(${guide.photoURL})`,
               borderRadius: "10px 10px 0 0",
@@ -95,8 +92,8 @@ import {
                     // fontWeight: "400",
                   }}
                 >
-                  {/* {channel.channelDescription} */}
-                  Hi! I'm Tyler, I'll be your perfect guide for NYC
+                  {guide.guideDescription}
+                  
                 </h4>
               </Col>
   
@@ -129,11 +126,23 @@ import {
                 marginRight: 24,
               }}
             >
-              {/* {channel.channelAbout} */}
-              Specializes in: Music venues, jazz clubs, off the beaten path
+              Group specialities: {guide.groupSpecialities}
+            </h4>
+            <h4
+              style={{
+                color: "black",
+                opacity: "0.6",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                // fontWeight: "400",
+                marginRight: 24,
+              }}
+            >
+              Activity expert in: {guide.guideSpecialities}
             </h4>
           </div>
-        {/* </Link> */}
+        </Link>
       </Col>
     );
   }

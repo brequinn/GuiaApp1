@@ -31,7 +31,7 @@ return (
                 <Route path="/" component={Home} exact /> 
                 <Route path="/MyTrips" component={MyTrips} />
                 <Route path="/searchResults" component={GuideResults} />
-                <Route path="/guideDetail" component={GuideDetail} />
+                <Route path="/guide/:guidename" component={GuideDetail} />
                 </Route>
             </BrowserRouter>  
              
