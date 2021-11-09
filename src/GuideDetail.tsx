@@ -59,7 +59,7 @@ export function GuideDetail() {
            <p>I specialize in the following activities : {guide.guideActivities} </p>
            <p>2 iterations on your itinerary</p>
            <Button>
-             Book your trip with {guide.guideName}
+             Book your trip with {guide.firstName}
            </Button>
       </div>
       </div> 

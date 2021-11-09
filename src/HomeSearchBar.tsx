@@ -44,7 +44,7 @@ const suffix = (
 
 return (
 
-  <Space direction="vertical" >
+  <Space style={{marginLeft: 100}} direction="vertical" >
     <Dropdown overlay={menu} >
       <Button>
     Where are you traveling to? <DownOutlined />

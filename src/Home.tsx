@@ -6,6 +6,7 @@ import firebase from 'firebase/compat/app';
 import { Header } from './Header';
 import { PopularDestinations } from './PopularDestinations';
 import { HomeSearchBar } from './HomeSearchBar';
+import { HomeDatePicker} from './HomeDatePicker';
 import { useHistory } from 'react-router-dom';
 
 export function Home() {
@@ -45,7 +46,7 @@ export function Home() {
              
              }} >
   <HomeSearchBar  />
-  <DatePicker style={{width: 200}} placeholder="When are you traveling?" onChange={onChange} />
+  <HomeDatePicker  />
         </div>
         <div>
           <Button  onClick={clickResult} type="primary"
