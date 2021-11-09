@@ -25,7 +25,7 @@ export function GuideDetail() {
     const result = querySnapshot.docs.map(doc=> doc.data());
     // setName(doc.data().guideName);
     setData(result);
-    console.log(JSON.stringify(result));
+    console.log(JSON.stringify(data1));
   }  
 
   useEffect(() => {
@@ -34,25 +34,38 @@ export function GuideDetail() {
 }, []);
   
   return (
+   
       <>
-       
-              
-        
+       {data1.map((guide: any) => (
+             <div>  
        <Header />
-      <div> 
+      <div style={{marginLeft: 30}}> 
+      <div
+            style={{
+              background: `linear-gradient(180deg, rgba(2, 9, 19, 0) 0%, rgba(2, 9, 19, 0.9) 100%), url(${guide.photoURL})`,
+              borderRadius: "10px 10px 0 0",
+              paddingBottom: "20%",
+              backgroundSize: "cover",
+            }}
+          ></div>
             <h1   
             
-        className="h1">  {data1.guideName}
+        className="h1">  {guide.guideName}
         </h1>
-        <p>Description</p>
-        <p>I specialize in the following groups: Couples, solo travelers
-           the following activites</p>
-           <p>I specialize in the following activities : Jazz shows, cool cafes, museums, bike rides </p>
+        <h1>Description</h1>
+        <p>{guide.guideDescription}</p>
+        <p>I specialize in the following groups: {guide.groupSpecialities}
+          </p>
+           <p>I specialize in the following activities : {guide.guideActivities} </p>
+           <p>2 iterations on your itinerary</p>
            <Button>
-             Book your trip with Tyler
+             Book your trip with {guide.guideName}
            </Button>
       </div>
+      </div> 
+         ))} 
       </>
+        
     );
   }
 

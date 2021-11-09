@@ -1,4 +1,4 @@
-import { Button, Dropdown } from 'antd';
+import { DatePicker, Space, Button } from 'antd';
 import { Link } from 'react-router-dom'
 import React from 'react';
 import "./css/Home.css";
@@ -6,8 +6,16 @@ import firebase from 'firebase/compat/app';
 import { Header } from './Header';
 import { PopularDestinations } from './PopularDestinations';
 import { HomeSearchBar } from './HomeSearchBar';
+import { useHistory } from 'react-router-dom';
 
 export function Home() {
+
+  function onChange(date: any, dateString: any) {
+    console.log(date, dateString);
+  }
+  const history = useHistory();
+  const clickResult = () => history.push('/searchResults');
+
     return (
       <>
        <Header />
@@ -37,6 +45,23 @@ export function Home() {
              
              }} >
   <HomeSearchBar  />
+  <DatePicker style={{width: 200}} placeholder="When are you traveling?" onChange={onChange} />
+        </div>
+        <div>
+          <Button  onClick={clickResult} type="primary"
+          size="large"
+          style={{
+            marginBottom: 16,
+            marginRight: 8,
+            top: 8,
+            borderRadius: 200,
+            marginLeft: 750,
+            marginTop: 20,
+            color: "white",
+            border: "none",
+            padding: "8px 28px",
+            backgroundColor: "#599B67",
+          }}>Search</Button>
         </div>
        <div className="getStartedButton">
       

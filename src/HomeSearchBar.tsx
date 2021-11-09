@@ -14,17 +14,17 @@ const menu = (
       <a href="javascript:void(0)">Edit</a>
     </Menu.Item> */}
     <Menu.Item>
-      <a onClick={clickResult} href="javascript:void(0)">
+      <a href="javascript:void(0)">
         New York City
       </a>
     </Menu.Item>
     <Menu.Item>
-      <a onClick={clickResult} href="javascript:void(0)">
+      <a href="javascript:void(0)">
         London  
       </a>
     </Menu.Item>
     <Menu.Item>
-      <a onClick={clickResult} href="javascript:void(0)">
+      <a href="javascript:void(0)">
         Berlin
       </a>
     </Menu.Item>
