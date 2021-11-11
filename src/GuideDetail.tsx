@@ -1,4 +1,4 @@
-import { Button, Dropdown } from 'antd';
+import { Button, Dropdown, Card } from 'antd';
 import React, { useEffect, Component, useState } from "react";
 import "./css/Home.css";
 import firebase from 'firebase/compat/app';
@@ -6,6 +6,7 @@ import { Header } from './Header';
 import { GuideCard } from './GuideCard';
 import { Link, useParams } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
+import { RedoOutlined } from "@ant-design/icons";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getFirestore, collection, query, where, getDocs} from "firebase/firestore";
 
@@ -52,15 +53,25 @@ export function GuideDetail() {
             
         className="h1">  {guide.guideName}
         </h1>
-        <h1>Description</h1>
+        <h1>About this guide</h1>
         <p>{guide.guideDescription}</p>
         <p>I specialize in the following groups: {guide.groupSpecialities}
           </p>
            <p>I specialize in the following activities : {guide.guideActivities} </p>
            <p>2 iterations on your itinerary</p>
-           <Button>
+           <div>
+           <Card size="small" title="Booking price" style={{ width: 300 }}>
+      <p>${guide.guideDailyCost} per day</p>
+      <p>3 Days Delivery</p>
+      <RedoOutlined />
+      <p>2 revisions</p>
+    
+      <Button>
              Book your trip with {guide.firstName}
            </Button>
+    </Card>
+           </div>
+         
       </div>
       </div> 
          ))} 

@@ -6,14 +6,27 @@ import { Avatar, Dropdown, Menu, Space, Button } from "antd";
 import { UserOutlined, DownOutlined } from "@ant-design/icons";
 import { useAuth, useUser } from "reactfire";
 import { Link } from "react-router-dom";
+import { initializeApp } from "firebase/app";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getFirestore, collection, query, where, doc, setDoc} from "firebase/firestore";
 
 export function Header() {
   const auth = useAuth();
   const user = auth.currentUser;
+  const firebaseConfig = {
+    apiKey: "AIzaSyCNjEmxNEcqTfytXFkogstdxxKP_rejONs",
+    authDomain: "guiaapp-9c636.firebaseapp.com",
+    projectId: "guiaapp-9c636",
+    storageBucket: "guiaapp-9c636.appspot.com",
+    messagingSenderId: "932046445247",
+    appId: "1:932046445247:web:7c820a6d040f53ebc0c40a"
+  };
 
-  function googleLogin() {
+const firebaseApp = initializeApp(firebaseConfig);
+const authInstance = getAuth(firebaseApp);
+
+  async function googleLogin() {
    
   const googleProvider = new GoogleAuthProvider();
   googleProvider.addScope("profile");
@@ -26,18 +39,17 @@ signInWithPopup(auth, googleProvider)
     // The signed-in user info.
     const user = result.user;
     // auth.updateCurrentUser(user);
-    console.log("this is my user uid!!!");
       });
-      const db = firebase.firestore();
+      const db = getFirestore();
       const user1 = auth.currentUser;
       if (user1) {
-      db.collection("users").doc(user1.uid).set({
-        uid: user1.uid,
-        email: user1.email,
-        name: user1.displayName,
-        photoURL: user1.photoURL,
-        lastLoggedIn: firebase.firestore.FieldValue.serverTimestamp(),
-      });
+        await setDoc(doc(db, "users", user1.uid), {
+          uid: user1.uid,
+          email: user1.email,
+          name: user1.displayName,
+          photoURL: user1.photoURL,
+          // lastLoggedIn: firebase.firestore.FieldValue.serverTimestamp(),
+        }); 
     }
     }
   
@@ -46,12 +58,10 @@ signInWithPopup(auth, googleProvider)
     } 
 
     useEffect(() => {
-      auth.onIdTokenChanged(function (user) {
-   
-      });
-      console.log("this is my user uid " + user);
+      onAuthStateChanged(authInstance, user => console.log(user));
    
     });
+    
     
 
   return (
