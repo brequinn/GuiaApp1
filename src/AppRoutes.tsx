@@ -6,7 +6,8 @@ import "firebase/firestore";
 import { Home } from './Home';
 import { GuideResults } from './GuideResults';
 import { GuideDetail } from './GuideDetail';
-import { MyTrips } from './MyTrips';
+import { OrderConfirmation } from './OrderConfirmation';
+import { MyTrips } from './Trips/MyTrips';
 import {
     BrowserRouter,
     Route,
@@ -32,6 +33,7 @@ return (
                 <Route path="/MyTrips" component={MyTrips} />
                 <Route path="/searchResults" component={GuideResults} />
                 <Route path="/guide/:guidename" component={GuideDetail} />
+                <Route path="/:guidename/confirmation" component={OrderConfirmation} />
                 </Route>
             </BrowserRouter>  
              

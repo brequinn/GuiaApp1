@@ -41,18 +41,14 @@ export function GuideDetail() {
              <div>  
        <Header />
       <div style={{marginLeft: 30}}> 
-      <div
-            style={{
-              background: `linear-gradient(180deg, rgba(2, 9, 19, 0) 0%, rgba(2, 9, 19, 0.9) 100%), url(${guide.photoURL})`,
-              borderRadius: "10px 10px 0 0",
-              paddingBottom: "20%",
-              backgroundSize: "cover",
-            }}
-          ></div>
+      <div>
+      <img style={{marginLeft: 650}} src={guide.photoURL}/>
             <h1   
             
         className="h1">  {guide.guideName}
         </h1>
+        
+        </div>
         <h1>About this guide</h1>
         <p>{guide.guideDescription}</p>
         <p>I specialize in the following groups: {guide.groupSpecialities}
@@ -66,9 +62,11 @@ export function GuideDetail() {
       <RedoOutlined />
       <p>2 revisions</p>
     
+      <Link to={`/${guide.IDtag}/confirmation`}>
       <Button>
              Book your trip with {guide.firstName}
            </Button>
+           </Link>
     </Card>
            </div>
          
