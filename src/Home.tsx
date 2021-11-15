@@ -1,21 +1,72 @@
-import { DatePicker, Space, Button } from 'antd';
-import { Link } from 'react-router-dom'
+import { Input, Space, Dropdown, Button, Menu, Select } from 'antd';
+import { DatePicker } from 'antd';
+import moment from 'moment';
 import React from 'react';
 import "./css/Home.css";
-import firebase from 'firebase/compat/app';
 import { Header } from './Header';
-import { PopularDestinations } from './PopularDestinations';
-import { HomeSearchBar } from './HomeSearchBar';
-import { HomeDatePicker} from './HomeDatePicker';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 export function Home() {
+
+  const { RangePicker } = DatePicker;
+
+    const dateFormat = 'MM/DD/YYYY';
+    const weekFormat = 'MM/DD';
+    const monthFormat = 'MM/YYYY';
+    
+    const dateFormatList = ['MM/DD/YYYY', 'MM/DD/YY'];
+
+
+const history = useHistory();
+
+const { Search } = Input;
+const [tripLocation, settripLocation] = useState<any>([]);
+const [tripTimeline, settripTimeline] = useState<any>([]);
+
 
   function onChange(date: any, dateString: any) {
     console.log(date, dateString);
   }
-  const history = useHistory();
-  const clickResult = () => history.push('/searchResults');
+
+  useEffect(() => {
+  }, );
+  
+  const { Option } = Select;
+  
+  function butt() {
+    console.log("this is the date!"  + tripTimeline)
+  }
+
+  function butt1() {
+    console.log("this is the location!"     + tripLocation)
+  }
+  
+  function onLocationChange1(value: any) {
+    console.log(`selected ${value}`);
+    settripLocation(value);
+    console.log("Trip location is "  + tripLocation)
+  }
+
+  function onTimeChange(value: any) {
+    console.log(`selected ${value}`);
+    settripTimeline(value);
+    console.log("Trip timeline is " + tripTimeline)
+  }
+  
+  function onBlur() {
+    console.log('blur');
+  }
+  
+  function onFocus() {
+    console.log('focus');
+  }
+  
+  function onSearch(val: any) {
+    console.log('search:', val);
+  }
+  
 
     return (
       <>
@@ -45,11 +96,31 @@ export function Home() {
                marginLeft: 550,
              
              }} >
-  <HomeSearchBar  />
-  <HomeDatePicker  />
+ <Space style={{marginLeft: 100}} direction="vertical" >
+    <Select
+    showSearch
+    style={{ width: 200 }}
+    placeholder="Where are you traveling to?"
+    optionFilterProp="locations"
+    onChange={onLocationChange1}
+    onFocus={onFocus}
+    onBlur={onBlur}
+    onSearch={onSearch}
+  >
+    <Option value="New York City">New York City</Option>
+  </Select>
+  </Space>
+  <div style={{marginTop: 20, marginLeft: 100}}>
+<RangePicker
+      // defaultValue={[moment('2015/01/01', dateFormat), moment('2015/01/01', dateFormat)]}
+      format={dateFormat} onChange={onTimeChange}
+    />
+      </div>
         </div>
+        <Link to={`/searchResults/${tripLocation}/${tripTimeline}`}>
+        
         <div>
-          <Button  onClick={clickResult} type="primary"
+          <Button type="primary"
           size="large"
           style={{
             marginBottom: 16,
@@ -63,11 +134,14 @@ export function Home() {
             padding: "8px 28px",
             backgroundColor: "#599B67",
           }}>Search</Button>
+    
         </div>
+        </Link>
        <div className="getStartedButton">
       
         </div>
-        <PopularDestinations/>
+    <h1 onClick={butt1}> Test Location</h1>
+    <h1 onClick={butt}> Test Timeline</h1>
       </div>
       </>
     );

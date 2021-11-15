@@ -21,7 +21,7 @@ import {
   export function GuideCard( {guide} : {guide:any}) {
 
     useEffect(() => {
-      console.log("this is the name " + guide.guideName);
+    
   }, []);
 
   const params = useParams();

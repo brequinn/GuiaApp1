@@ -19,7 +19,10 @@ export function OrderConfirmation() {
   var user = auth.currentUser;
   const params = useParams<{guidename?: string}>();
   const [data1, setData] = useState<any>([]);
+  const [travelLocation, settravelLocation] = useState<any>([]);
+  const [travelDates, settravelDates] = useState<any>([]);
   const [guideName, setName] = useState<any>([]);
+
 
   async function getGuideDetail() {
     const db = getFirestore();

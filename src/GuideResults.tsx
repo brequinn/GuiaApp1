@@ -9,7 +9,7 @@ import { FileAddOutlined } from "@ant-design/icons";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import 'firebase/firestore';
 import { initializeApp } from "firebase/app";
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { getFirestore, collection, query, where, getDocs} from "firebase/firestore";
 
 export function GuideResults() {
@@ -17,6 +17,8 @@ const auth = getAuth();
   var user = auth.currentUser;
 const [data1, setData] = useState<any>([]);
 const history = useHistory();
+const paramsTimeframe = useParams<{timeframe?: string}>();
+const paramsLocation = useParams<{location?: string}>();
 
   async function getGuides() {
     const user = auth.currentUser;
@@ -27,17 +29,18 @@ const history = useHistory();
     
     
     setData(result);
-    console.log(JSON.stringify(result));
+   
   }
 
   useEffect(() => {
       getGuides();
+      console.log("THIS IS THE LOCATION DID IT WORK?"  + (JSON.stringify(paramsLocation.location)));
   }, []);
 
   return (  
     <>
     <Header />
-    <h1>Showing results for London for 11/4-11-25 </h1>
+    <h1>Showing results for {paramsLocation.location} for {paramsTimeframe.timeframe} </h1>
 
 {data1.map((guide: any) => (
         

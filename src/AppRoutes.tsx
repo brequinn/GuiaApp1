@@ -18,12 +18,6 @@ import {
   } from "react-router-dom";
 
 export function AppRoutes() {
-// const user = useUser();
-
-// useEffect(() => {
-//     const user = firebase.auth().currentUser;
-//     console.log(user);
-//   }, []);
 
 return (
             <BrowserRouter>
@@ -31,7 +25,7 @@ return (
                 
                 <Route path="/" component={Home} exact /> 
                 <Route path="/MyTrips" component={MyTrips} />
-                <Route path="/searchResults" component={GuideResults} />
+                <Route path="/searchResults/:location/:timeframe" component={GuideResults} />
                 <Route path="/guide/:guidename" component={GuideDetail} />
                 <Route path="/:guidename/confirmation" component={OrderConfirmation} />
                 </Route>
