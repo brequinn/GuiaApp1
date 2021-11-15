@@ -16,10 +16,13 @@ import {
   import firestore from "./firestore";
   import { useHistory } from 'react-router-dom';
   import "./css/ImageTile.css";
+import { useState } from "react";
 
   
   export function GuideCard( {guide} : {guide:any}) {
 
+    const paramsTimeframe = useParams<{timeframe?: string}>();
+    const paramsLocation = useParams<{location?: string}>();
     useEffect(() => {
     
   }, []);
@@ -39,7 +42,7 @@ import {
           marginTop: 50
         }}
       >
-        <Link to={`/guide/${guide.IDtag}`}>
+        <Link to={`/guide/${guide.IDtag}/${paramsLocation.location}/${paramsTimeframe.timeframe}`}>
           <div
             style={{
               background: `linear-gradient(180deg, rgba(2, 9, 19, 0) 0%, rgba(2, 9, 19, 0.9) 100%), url(${guide.photoURL})`,

@@ -26,8 +26,8 @@ return (
                 <Route path="/" component={Home} exact /> 
                 <Route path="/MyTrips" component={MyTrips} />
                 <Route path="/searchResults/:location/:timeframe" component={GuideResults} />
-                <Route path="/guide/:guidename" component={GuideDetail} />
-                <Route path="/:guidename/confirmation" component={OrderConfirmation} />
+                <Route path="/guide/:guidename/:location/:timeframe" component={GuideDetail} />
+                <Route path="/:guidename/:location/:timeframe/confirmation" component={OrderConfirmation} />
                 </Route>
             </BrowserRouter>  
              

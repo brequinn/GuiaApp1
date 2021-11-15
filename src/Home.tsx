@@ -15,6 +15,7 @@ export function Home() {
     const dateFormat = 'MM/DD/YYYY';
     const weekFormat = 'MM/DD';
     const monthFormat = 'MM/YYYY';
+   
     
     const dateFormatList = ['MM/DD/YYYY', 'MM/DD/YY'];
 
@@ -35,24 +36,19 @@ const [tripTimeline, settripTimeline] = useState<any>([]);
   
   const { Option } = Select;
   
-  function butt() {
-    console.log("this is the date!"  + tripTimeline)
-  }
-
-  function butt1() {
-    console.log("this is the location!"     + tripLocation)
-  }
-  
   function onLocationChange1(value: any) {
     console.log(`selected ${value}`);
     settripLocation(value);
+    
+   
     console.log("Trip location is "  + tripLocation)
   }
 
   function onTimeChange(value: any) {
-    console.log(`selected ${value}`);
+ 
+
     settripTimeline(value);
-    console.log("Trip timeline is " + tripTimeline)
+  
   }
   
   function onBlur() {
@@ -108,12 +104,12 @@ const [tripTimeline, settripTimeline] = useState<any>([]);
     onSearch={onSearch}
   >
     <Option value="New York City">New York City</Option>
+   
   </Select>
   </Space>
   <div style={{marginTop: 20, marginLeft: 100}}>
 <RangePicker
-      // defaultValue={[moment('2015/01/01', dateFormat), moment('2015/01/01', dateFormat)]}
-      format={dateFormat} onChange={onTimeChange}
+      format={dateFormat} onChange={onTimeChange} 
     />
       </div>
         </div>
@@ -140,8 +136,7 @@ const [tripTimeline, settripTimeline] = useState<any>([]);
        <div className="getStartedButton">
       
         </div>
-    <h1 onClick={butt1}> Test Location</h1>
-    <h1 onClick={butt}> Test Timeline</h1>
+    
       </div>
       </>
     );

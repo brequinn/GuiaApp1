@@ -1,4 +1,4 @@
-import { Button, Dropdown, Card, Avatar } from 'antd';
+import { Button, Dropdown, Card, Avatar, Space, Select } from 'antd';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import "./css/Home.css";
 import firebase from 'firebase/compat/app';
@@ -22,6 +22,9 @@ export function OrderConfirmation() {
   const [travelLocation, settravelLocation] = useState<any>([]);
   const [travelDates, settravelDates] = useState<any>([]);
   const [guideName, setName] = useState<any>([]);
+  const { Option } = Select;
+  const paramsTimeframe = useParams<{timeframe?: string}>();
+  const paramsLocation = useParams<{location?: string}>();
 
 
   async function getGuideDetail() {
@@ -32,7 +35,28 @@ export function OrderConfirmation() {
     // setName(doc.data().guideName);
     setData(result);
     console.log(JSON.stringify(data1));
-  }  
+  }
+  
+  function onLocationChange1(value: any) {
+    console.log(`selected ${value}`);
+    // settripLocation(value);
+    
+   
+    
+  }
+
+ 
+  function onBlur() {
+    console.log('blur');
+  }
+  
+  function onFocus() {
+    console.log('focus');
+  }
+  
+  function onSearch(val: any) {
+    console.log('search:', val);
+  }
 
   useEffect(() => {
     getGuideDetail();
@@ -53,10 +77,45 @@ export function OrderConfirmation() {
         <img  src={guide.photoURL}/>
         <h1>Your trip with {guide.firstName}</h1>
         <h3>Details</h3>
-        <p>Trip to London from 11/5-11/30</p>
+        <p>Trip to {paramsLocation.location} from {paramsTimeframe.timeframe}</p>
+        <p>$45 per day
+    </p>
+
+    <p>3 days delivery
+    </p>
+
+    <p>2 revisions
+    </p>
+        <h3>Days to book</h3>
+        <Space style={{marginLeft: 0}} direction="vertical" >
+    <Select
+    showSearch
+    style={{ width: 200 }}
+    placeholder="Select days to book"
+    optionFilterProp="locations"
+    onChange={onLocationChange1}
+    onFocus={onFocus}
+    onBlur={onBlur}
+    onSearch={onSearch}
+  >
+    <Option value="1">1</Option>
+    <Option value="2">2</Option>
+    <Option value="3">3</Option>
+    <Option value="4">4</Option>
+    <Option value="5">5</Option>
+    <Option value="6">6</Option>
+    <Option value="7">7</Option>
+    <Option value="8">8</Option>
+    <Option value="9">9</Option>
+    <Option value="10">10</Option>
+
+   
+  </Select>
+  </Space>
+
         </div>
 
-        <Card title="Price summary" style={{ width: 300, marginLeft: 1200, marginTop: -350 }}>
+        <Card title="Price summary" style={{ width: 300, marginLeft: 1200, marginTop: -570 }}>
       <p>Subtotal: $50</p>
       <p>Service Fee: $7.50</p>
       <p>Total: $57.50</p>

@@ -17,6 +17,8 @@ export function GuideDetail() {
   const params = useParams<{guidename?: string}>();
   const [data1, setData] = useState<any>([]);
   const [guideName, setName] = useState<any>([]);
+  const paramsTimeframe = useParams<{timeframe?: string}>();
+  const paramsLocation = useParams<{location?: string}>();
 
   
   async function getGuideDetail() {
@@ -56,15 +58,15 @@ export function GuideDetail() {
            <p>I specialize in the following activities : {guide.guideActivities} </p>
            <p>2 iterations on your itinerary</p>
            <div>
-           <Card size="small" title="Booking price" style={{ width: 300 }}>
+           <Card size="small" title="Booking price" style={{ width: 400 }}>
       <p>${guide.guideDailyCost} per day</p>
       <p>3 Days Delivery</p>
       <RedoOutlined />
       <p>2 revisions</p>
     
-      <Link to={`/${guide.IDtag}/confirmation`}>
+      <Link to={`/${guide.IDtag}/${paramsLocation.location}/${paramsTimeframe.timeframe}/confirmation`}>
       <Button>
-             Book your trip with {guide.firstName}
+             Book your trip with {guide.firstName} for {paramsLocation.location}
            </Button>
            </Link>
     </Card>
