@@ -22,6 +22,8 @@ export function OrderConfirmation() {
   const [travelLocation, settravelLocation] = useState<any>([]);
   const [travelDates, settravelDates] = useState<any>([]);
   const [guideName, setName] = useState<any>([]);
+  const [costPrice, setcostPrice] = useState<any>([45]);
+  const [daystoBook, setdaystoBook] = useState<any>([1]);
   const { Option } = Select;
   const paramsTimeframe = useParams<{timeframe?: string}>();
   const paramsLocation = useParams<{location?: string}>();
@@ -36,13 +38,22 @@ export function OrderConfirmation() {
     setData(result);
     console.log(JSON.stringify(data1));
   }
+
+  async function createTrip() {
+    var user = auth.currentUser;
+    const db = getFirestore();
+    const q = query(collection(db, "users"), where(`IDtag`, `==`, user));
+  }
   
   function onLocationChange1(value: any) {
     console.log(`selected ${value}`);
-    // settripLocation(value);
-    
-   
-    
+    setdaystoBook(value);
+    setcostPrice(value*45);
+  }
+
+  function updatePriceAndDate() {
+
+
   }
 
  
@@ -83,12 +94,13 @@ export function OrderConfirmation() {
 
     <p>3 days delivery
     </p>
-
+    <RedoOutlined />
     <p>2 revisions
     </p>
         <h3>Days to book</h3>
         <Space style={{marginLeft: 0}} direction="vertical" >
     <Select
+    defaultValue="1"
     showSearch
     style={{ width: 200 }}
     placeholder="Select days to book"
@@ -116,10 +128,10 @@ export function OrderConfirmation() {
         </div>
 
         <Card title="Price summary" style={{ width: 300, marginLeft: 1200, marginTop: -570 }}>
-      <p>Subtotal: $50</p>
-      <p>Service Fee: $7.50</p>
-      <p>Total: $57.50</p>
+      <p>Days to plan: {daystoBook} days</p>
+      <p>Total: ${costPrice}</p>
       <p>Delivery time: 3 days</p>
+     
      
       <Button   type="primary"
           size="large"

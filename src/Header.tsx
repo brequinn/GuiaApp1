@@ -52,6 +52,11 @@ signInWithPopup(auth, googleProvider)
         }); 
     }
     }
+
+    function yes() {
+      const user1 = auth.currentUser;
+      console.log(JSON.stringify(user1));
+    }
   
     function Logout() {
       auth.signOut();
@@ -124,8 +129,8 @@ signInWithPopup(auth, googleProvider)
               overlayStyle={{ paddingTop: 16, marginLeft: -100 }}
               overlay={
                 <Menu>
-                  <Menu.Item>
-                    <Link to={"/accountinformation"}>Account information</Link>
+                  <Menu.Item onClick={yes}>
+                   Account information
                   </Menu.Item>
                   <Menu.Item>
                     <a
