@@ -7,6 +7,7 @@ import { Header } from './Header';
 import { useHistory, Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { message } from 'antd';
 
 export function Home() {
 
@@ -23,13 +24,22 @@ export function Home() {
 const history = useHistory();
 
 const { Search } = Input;
-const [tripLocation, settripLocation] = useState<any>([]);
-const [tripTimeline, settripTimeline] = useState<any>([]);
+const [tripLocation, settripLocation] = useState<any>([1]);
+const [tripTimeline, settripTimeline] = useState<any>([2]);
 
 
   function onChange(date: any, dateString: any) {
     console.log(date, dateString);
   }
+
+
+  function checkData() {
+   if (tripLocation == 1 || tripTimeline == 2) {
+    message.warn('Please fill out your travel destination and when you plan to travel');
+  } else {
+  history.push(`/searchResults/${tripLocation}/${tripTimeline}`);
+  }
+}
 
   useEffect(() => {
   }, );
@@ -95,7 +105,7 @@ const [tripTimeline, settripTimeline] = useState<any>([]);
  <Space style={{marginLeft: 100}} direction="vertical" >
     <Select
     showSearch
-    style={{ width: 200 }}
+    style={{ width: 260 }}
     placeholder="Where are you traveling to?"
     optionFilterProp="locations"
     onChange={onLocationChange1}
@@ -113,11 +123,12 @@ const [tripTimeline, settripTimeline] = useState<any>([]);
     />
       </div>
         </div>
-        <Link to={`/searchResults/${tripLocation}/${tripTimeline}`}>
+      
         
         <div>
           <Button type="primary"
           size="large"
+          onClick={checkData}
           style={{
             marginBottom: 16,
             marginRight: 8,
@@ -132,7 +143,7 @@ const [tripTimeline, settripTimeline] = useState<any>([]);
           }}>Search</Button>
     
         </div>
-        </Link>
+        {/* </Link> */}
        <div className="getStartedButton">
       
         </div>
