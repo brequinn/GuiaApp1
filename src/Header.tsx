@@ -8,12 +8,35 @@ import { useAuth, useUser } from "reactfire";
 import { Link } from "react-router-dom";
 import { initializeApp } from "firebase/app";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signInWithRedirect } from "firebase/auth";
 import { getFirestore, collection, query, where, doc, setDoc} from "firebase/firestore";
 
 export function Header() {
-  const auth = useAuth();
-  const user = auth.currentUser;
+const auth = useAuth();
+const [user34, setUser34] = useState<any>([]);
+
+  
+ auth.onAuthStateChanged(function(user) {
+    if (user != null) {
+      console.log(JSON.stringify(user));
+    } else {
+      console.log(JSON.stringify(user));
+    }
+  });
+
+  useEffect(() => {
+    auth.onAuthStateChanged(function(user) {
+      setUser34(user);
+      });
+    
+  });
+
+  function user3d(){
+    auth.onAuthStateChanged(function(user) {
+    console.log(user)
+  });
+  }
+  
   const firebaseConfig = {
     apiKey: "AIzaSyCNjEmxNEcqTfytXFkogstdxxKP_rejONs",
     authDomain: "guiaapp-9c636.firebaseapp.com",
@@ -23,6 +46,7 @@ export function Header() {
     appId: "1:932046445247:web:7c820a6d040f53ebc0c40a"
   };
 
+ 
 const firebaseApp = initializeApp(firebaseConfig);
 const authInstance = getAuth(firebaseApp);
 
@@ -32,12 +56,12 @@ const authInstance = getAuth(firebaseApp);
   googleProvider.addScope("profile");
   googleProvider.addScope("email");
     const auth = getAuth();
-signInWithPopup(auth, googleProvider)
+  signInWithRedirect(auth, googleProvider)
   .then((result) => {
     const credential = GoogleAuthProvider.credentialFromResult(result) as firebase.auth.OAuthCredential; 
     const token = credential.accessToken;
     // The signed-in user info.
-    const user = result.user;
+    const user = result;
     // auth.updateCurrentUser(user);
       });
       const db = getFirestore();
@@ -51,23 +75,14 @@ signInWithPopup(auth, googleProvider)
           // lastLoggedIn: firebase.firestore.FieldValue.serverTimestamp(),
         }); 
     }
+
     }
 
-    function yes() {
-      const user1 = auth.currentUser;
-      console.log(JSON.stringify(user1));
-    }
-  
     function Logout() {
+      auth.onAuthStateChanged(function(user) {
       auth.signOut();
-    } 
-
-    useEffect(() => {
-      onAuthStateChanged(authInstance, user => console.log(user));
-   
     });
-    
-    
+    } 
 
   return (
     <div
@@ -121,7 +136,7 @@ signInWithPopup(auth, googleProvider)
         </Space>
       </Link>
 
-      { user ?
+      { user34 ?
         <div style={{ marginLeft: "auto" }}>
           <Space direction="horizontal" size="middle">
             <Dropdown
@@ -129,7 +144,7 @@ signInWithPopup(auth, googleProvider)
               overlayStyle={{ paddingTop: 16, marginLeft: -100 }}
               overlay={
                 <Menu>
-                  <Menu.Item onClick={yes}>
+                  <Menu.Item>
                    Account information
                   </Menu.Item>
                   <Menu.Item>
@@ -158,6 +173,7 @@ signInWithPopup(auth, googleProvider)
           </Space>
         </div>   
        :
+       
         <Button
           onClick={googleLogin}
           type="primary"
@@ -176,11 +192,10 @@ signInWithPopup(auth, googleProvider)
         >
           Login
         </Button>
-        }     
+}
     </div>
   );
 }
-
 function Photo() {
   const { currentUser } = useAuth();
 
@@ -190,3 +205,4 @@ function Photo() {
   }
   return <Avatar src={currentUser.photoURL}></Avatar>;
 }
+

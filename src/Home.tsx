@@ -7,11 +7,14 @@ import { Header } from './Header';
 import { useHistory, Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { message } from 'antd';
 
 export function Home() {
 
   const { RangePicker } = DatePicker;
+  const auth = getAuth();
+ 
 
     const dateFormat = 'MM/DD/YYYY';
     const weekFormat = 'MM/DD';
@@ -26,10 +29,17 @@ const history = useHistory();
 const { Search } = Input;
 const [tripLocation, settripLocation] = useState<any>([1]);
 const [tripTimeline, settripTimeline] = useState<any>([2]);
+const [userProfile, setuserProfile] = useState<any>([]);
 
 
   function onChange(date: any, dateString: any) {
     console.log(date, dateString);
+  }
+
+  function testUser() {
+    auth.onAuthStateChanged(function(user) {
+    console.log(JSON.stringify(user))
+  });
   }
 
 
@@ -42,6 +52,8 @@ const [tripTimeline, settripTimeline] = useState<any>([2]);
 }
 
   useEffect(() => {
+    // Auth.onAuthStateChanged()
+
   }, );
   
   const { Option } = Select;
@@ -147,7 +159,6 @@ const [tripTimeline, settripTimeline] = useState<any>([2]);
        <div className="getStartedButton">
       
         </div>
-    
       </div>
       </>
     );
