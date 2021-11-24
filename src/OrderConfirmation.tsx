@@ -11,7 +11,6 @@ import { RedoOutlined } from "@ant-design/icons";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getFirestore, collection, query, where, getDocs, doc, setDoc, addDoc} from "firebase/firestore";
 
-
 export function OrderConfirmation() {
   const { Meta } = Card;
   const auth = getAuth();
@@ -20,7 +19,9 @@ export function OrderConfirmation() {
   const [data1, setData] = useState<any>([]);
   const [travelLocation, settravelLocation] = useState<any>([]);
   const [travelDates, settravelDates] = useState<any>([]);
-  const [guideName, setName] = useState<any>([]);  
+  const [guideName, setGuideName] = useState<any>([]); 
+  const [guideFirstName, setGuideFirstName] = useState<any>([]); 
+  const [guideLocation, setGuideLocation] = useState<any>([]);  
   const [user1, setUser1] = useState<any>([]);
   const [costPrice, setcostPrice] = useState<any>([45]);
   const [daystoBook, setdaystoBook] = useState<any>([1]);
@@ -36,14 +37,23 @@ export function OrderConfirmation() {
     const result = querySnapshot.docs.map(doc=> doc.data());
     setData(result);
     console.log(JSON.stringify(data1));
+    console.log("testttt" + data1.guideDailyCost)
   }
 
   async function bookTrip(){
     const db = getFirestore();
-      await addDoc(collection(db, "users", user1.uid, "trips"),{
-        forname: "Peter",
-        surname: "Parker",
-        tripDesitination: "Mexico"
+       addDoc(collection(db, "trips"),
+      {
+        guideName: guideName,
+        // guideFirstName: guideFirstName,
+        guideLocation: guideLocation,
+        travelerUID: user1.uid,
+        guideID: params.guidename,
+        tripLocation: (paramsLocation.location),
+        tripTimeframe: (paramsTimeframe.timeframe),
+        tripDayLength: (daystoBook),
+        tripCost: (costPrice),
+        
     })
     console.log ("Data sent")
   
@@ -54,6 +64,12 @@ export function OrderConfirmation() {
     getGuideDetail();
     setUser1(user);
   });
+  {data1.map((guide: any) => (
+   [setGuideName(guide.guideName),
+   setGuideLocation(guide.guideLocation)
+  ]
+    ))}
+
 }, []);
   
 
@@ -64,12 +80,6 @@ export function OrderConfirmation() {
     setcostPrice(value*45);
   }
 
-  function updatePriceAndDate() {
-
-
-  }
-
- 
   function onBlur() {
     console.log('blur');
   }
@@ -143,7 +153,7 @@ export function OrderConfirmation() {
       <p>Estimated delivery time: 3 days</p>
      
      
-      {/* <Link to="/MyTrips"> */}
+      <Link to="/MyTrips">
       <Button   type="primary"
           size="large"
           onClick={bookTrip}
@@ -159,7 +169,7 @@ export function OrderConfirmation() {
             backgroundColor: "#599B67",
           }}>Book your trip with {guide.firstName}
           </Button>
-          {/* </Link> */}
+          </Link>
     </Card>
 
      

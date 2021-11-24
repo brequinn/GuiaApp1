@@ -28,7 +28,7 @@ const [user34, setUser34] = useState<any>([]);
   useEffect(() => {
     auth.onAuthStateChanged( async function(user) {
     setUser34(user);
-    addUser();
+    // addUser(); This is not workign and causing an error  (the state of the user34 seems to be null)
   });
       });
     
