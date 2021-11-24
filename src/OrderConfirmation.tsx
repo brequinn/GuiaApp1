@@ -7,10 +7,9 @@ import React, { useEffect, Component, useState } from "react";
 import "./css/Home.css";
 import { GuideCard } from './GuideCard';
 import { Link, useParams } from "react-router-dom";
-import { doc, getDoc } from "firebase/firestore";
 import { RedoOutlined } from "@ant-design/icons";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { getFirestore, collection, query, where, getDocs} from "firebase/firestore";
+import { getFirestore, collection, query, where, getDocs, doc, setDoc, addDoc} from "firebase/firestore";
 
 
 export function OrderConfirmation() {
@@ -21,7 +20,8 @@ export function OrderConfirmation() {
   const [data1, setData] = useState<any>([]);
   const [travelLocation, settravelLocation] = useState<any>([]);
   const [travelDates, settravelDates] = useState<any>([]);
-  const [guideName, setName] = useState<any>([]);
+  const [guideName, setName] = useState<any>([]);  
+  const [user1, setUser1] = useState<any>([]);
   const [costPrice, setcostPrice] = useState<any>([45]);
   const [daystoBook, setdaystoBook] = useState<any>([1]);
   const { Option } = Select;
@@ -34,16 +34,29 @@ export function OrderConfirmation() {
     const q = query(collection(db, "guides"), where(`IDtag`, `==`, params.guidename));
     const querySnapshot = await getDocs(q);
     const result = querySnapshot.docs.map(doc=> doc.data());
-    // setName(doc.data().guideName);
     setData(result);
     console.log(JSON.stringify(data1));
   }
 
-  async function createTrip() {
-    var user = auth.currentUser;
+  async function bookTrip(){
     const db = getFirestore();
-    const q = query(collection(db, "users"), where(`IDtag`, `==`, user));
+      await addDoc(collection(db, "users", user1.uid, "trips"),{
+        forname: "Peter",
+        surname: "Parker",
+        tripDesitination: "Mexico"
+    })
+    console.log ("Data sent")
+  
   }
+
+  useEffect(() => {
+    auth.onAuthStateChanged(function(user) {
+    getGuideDetail();
+    setUser1(user);
+  });
+}, []);
+  
+
   
   function onLocationChange1(value: any) {
     console.log(`selected ${value}`);
@@ -69,9 +82,6 @@ export function OrderConfirmation() {
     console.log('search:', val);
   }
 
-  useEffect(() => {
-    getGuideDetail();
-}, []);
 
     return (
       <>
@@ -86,7 +96,7 @@ export function OrderConfirmation() {
         </h1>
         <div style={{marginLeft: 500}}>
         <img  src={guide.photoURL}/>
-        <h1>Your trip with {guide.firstName}</h1>
+        <h1>Book your trip with {guide.firstName}</h1>
         <h3>Details</h3>
         <p>Trip to {paramsLocation.location} from {paramsTimeframe.timeframe}</p>
         <p>$45 per day
@@ -130,23 +140,26 @@ export function OrderConfirmation() {
         <Card title="Price summary" style={{ width: 300, marginLeft: 1200, marginTop: -570 }}>
       <p>Days to plan: {daystoBook} days</p>
       <p>Total: ${costPrice}</p>
-      <p>Delivery time: 3 days</p>
+      <p>Estimated delivery time: 3 days</p>
      
      
+      {/* <Link to="/MyTrips"> */}
       <Button   type="primary"
           size="large"
+          onClick={bookTrip}
           style={{
             marginBottom: 16,
             marginRight: 8,
             top: 8,
             borderRadius: 200,
-           
             marginTop: 20,
             color: "white",
             border: "none",
             padding: "8px 28px",
             backgroundColor: "#599B67",
-          }}>Continue to checkout</Button>
+          }}>Book your trip with {guide.firstName}
+          </Button>
+          {/* </Link> */}
     </Card>
 
      

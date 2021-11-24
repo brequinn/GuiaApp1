@@ -9,34 +9,30 @@ import { Link } from "react-router-dom";
 import { initializeApp } from "firebase/app";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { getAuth, onAuthStateChanged, signInWithRedirect } from "firebase/auth";
-import { getFirestore, collection, query, where, doc, setDoc} from "firebase/firestore";
+import { getFirestore, collection, query, where, doc, addDoc, setDoc, updateDoc} from "firebase/firestore";
 
 export function Header() {
 const auth = useAuth();
 const [user34, setUser34] = useState<any>([]);
 
   
- auth.onAuthStateChanged(function(user) {
-    if (user != null) {
-      console.log(JSON.stringify(user));
-    } else {
-      console.log(JSON.stringify(user));
-    }
-  });
+//  auth.onAuthStateChanged(function(user) {
+//     if (user != null) {
+//       // addUser();
+//       console.log("user should be created in firebase now, check it")
+//     } else {
+//       console.log(JSON.stringify(user));
+//     }
+//   });
 
   useEffect(() => {
-    auth.onAuthStateChanged(function(user) {
-      setUser34(user);
+    auth.onAuthStateChanged( async function(user) {
+    setUser34(user);
+    addUser();
+  });
       });
     
-  });
 
-  function user3d(){
-    auth.onAuthStateChanged(function(user) {
-    console.log(user)
-  });
-  }
-  
   const firebaseConfig = {
     apiKey: "AIzaSyCNjEmxNEcqTfytXFkogstdxxKP_rejONs",
     authDomain: "guiaapp-9c636.firebaseapp.com",
@@ -46,37 +42,44 @@ const [user34, setUser34] = useState<any>([]);
     appId: "1:932046445247:web:7c820a6d040f53ebc0c40a"
   };
 
- 
 const firebaseApp = initializeApp(firebaseConfig);
 const authInstance = getAuth(firebaseApp);
 
-  async function googleLogin() {
-   
+   function googleLogin() {
+    auth.onAuthStateChanged(function(user) {
   const googleProvider = new GoogleAuthProvider();
   googleProvider.addScope("profile");
   googleProvider.addScope("email");
     const auth = getAuth();
   signInWithRedirect(auth, googleProvider)
   .then((result) => {
+    console.log("so this does work");
     const credential = GoogleAuthProvider.credentialFromResult(result) as firebase.auth.OAuthCredential; 
     const token = credential.accessToken;
     // The signed-in user info.
     const user = result;
-    // auth.updateCurrentUser(user);
-      });
-      const db = getFirestore();
-      const user1 = auth.currentUser;
-      if (user1) {
-        await setDoc(doc(db, "users", user1.uid), {
-          uid: user1.uid,
-          email: user1.email,
-          name: user1.displayName,
-          photoURL: user1.photoURL,
-          // lastLoggedIn: firebase.firestore.FieldValue.serverTimestamp(),
-        }); 
+      }
+      ); 
+      console.log("so this does work");
+    });
+     console.log("so this does work");
     }
 
+  async function addUser(){
+    auth.onAuthStateChanged( async function(user) {
+      setUser34(user);
+      const db = getFirestore();
+          await setDoc(doc(db, "users", user34.uid), 
+         {
+          uid: user34.uid,
+          email: user34.email,
+          name: user34.displayName,
+          photoURL: user34.photoURL
+        }); 
+        console.log("addUser function has fired")
+      });
     }
+
 
     function Logout() {
       auth.onAuthStateChanged(function(user) {
