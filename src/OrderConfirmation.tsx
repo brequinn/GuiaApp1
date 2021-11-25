@@ -20,6 +20,7 @@ export function OrderConfirmation() {
   const [travelLocation, settravelLocation] = useState<any>([]);
   const [travelDates, settravelDates] = useState<any>([]);
   const [guideName, setGuideName] = useState<any>([]); 
+  const [GuidephotoURL, setGuidePhoto] = useState<any>([]); 
   const [guideFirstName, setGuideFirstName] = useState<any>([]); 
   const [guideLocation, setGuideLocation] = useState<any>([]);  
   const [user1, setUser1] = useState<any>([]);
@@ -36,8 +37,7 @@ export function OrderConfirmation() {
     const querySnapshot = await getDocs(q);
     const result = querySnapshot.docs.map(doc=> doc.data());
     setData(result);
-    console.log(JSON.stringify(data1));
-    console.log("testttt" + data1.guideDailyCost)
+  
   }
 
   async function bookTrip(){
@@ -45,14 +45,13 @@ export function OrderConfirmation() {
        addDoc(collection(db, "trips"),
       {
         guideName: guideName,
-        // guideFirstName: guideFirstName,
-        guideLocation: guideLocation,
         travelerUID: user1.uid,
         guideID: params.guidename,
+        guidePhoto: GuidephotoURL,
         tripLocation: (paramsLocation.location),
         tripTimeframe: (paramsTimeframe.timeframe),
         tripDayLength: (daystoBook),
-        tripCost: (costPrice),
+        tripCost: (costPrice)
         
     })
     console.log ("Data sent")
@@ -60,16 +59,17 @@ export function OrderConfirmation() {
   }
 
   useEffect(() => {
-    auth.onAuthStateChanged(function(user) {
     getGuideDetail();
     setUser1(user);
-  });
   {data1.map((guide: any) => (
-   [setGuideName(guide.guideName),
-   setGuideLocation(guide.guideLocation)
-  ]
+   setGuideName(guide.guideName),
+    setGuidePhoto(guide.photoURL)
+  //  setGuidePhoto(guide.photoURL)
+  
     ))}
-
+    console.log(JSON.stringify(data1));
+    // console.log("guide name is" + guideName);
+    // console.log("guide photo URL is" + GuidephotoURL);
 }, []);
   
 
