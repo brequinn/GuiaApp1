@@ -10,11 +10,11 @@ import { Link, useParams } from "react-router-dom";
 import { RedoOutlined } from "@ant-design/icons";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getFirestore, collection, query, where, getDocs, doc, setDoc, addDoc} from "firebase/firestore";
+import { getDoc } from "firebase/firestore";
 
 export function OrderConfirmation() {
   const { Meta } = Card;
   const auth = getAuth();
-  var user = auth.currentUser;
   const params = useParams<{guidename?: string}>();
   const [data1, setData] = useState<any>([]);
   const [travelLocation, settravelLocation] = useState<any>([]);
@@ -30,50 +30,52 @@ export function OrderConfirmation() {
   const paramsTimeframe = useParams<{timeframe?: string}>();
   const paramsLocation = useParams<{location?: string}>();
 
+  useEffect(() => {
+    auth.onAuthStateChanged(async function(user) {
+      getGuideDetail();
+    console.log(JSON.stringify(data1));
+    // console.log(JSON.stringify(data1));
+    // console.log("guide name is" + guideName);
+    // console.log("guide photo URL is" + GuidephotoURL);
+  });
+}, []);
 
-  async function getGuideDetail() {
+    function getGuideDetail() {
+      auth.onAuthStateChanged(async function(user) {
+    setUser1(user);
     const db = getFirestore();
     const q = query(collection(db, "guides"), where(`IDtag`, `==`, params.guidename));
     const querySnapshot = await getDocs(q);
     const result = querySnapshot.docs.map(doc=> doc.data());
     setData(result);
   
+      });
   }
 
-  async function bookTrip(){
+  function bookTrip(){
     const db = getFirestore();
+    {data1.map((guide: any) => (
+    
+     
+     
        addDoc(collection(db, "trips"),
       {
-        guideName: guideName,
+        guideName: guide.guideName,
+        guideFirstName: guide.firstName,
         travelerUID: user1.uid,
         guideID: params.guidename,
-        guidePhoto: GuidephotoURL,
+        guidePhoto: guide.photoURL,
         tripLocation: (paramsLocation.location),
         tripTimeframe: (paramsTimeframe.timeframe),
         tripDayLength: (daystoBook),
         tripCost: (costPrice)
         
     })
+    ))}
     console.log ("Data sent")
   
   }
 
-  useEffect(() => {
-    getGuideDetail();
-    setUser1(user);
-  {data1.map((guide: any) => (
-   setGuideName(guide.guideName),
-    setGuidePhoto(guide.photoURL)
-  //  setGuidePhoto(guide.photoURL)
-  
-    ))}
-    console.log(JSON.stringify(data1));
-    // console.log("guide name is" + guideName);
-    // console.log("guide photo URL is" + GuidephotoURL);
-}, []);
-  
-
-  
   function onLocationChange1(value: any) {
     console.log(`selected ${value}`);
     setdaystoBook(value);
@@ -109,7 +111,7 @@ export function OrderConfirmation() {
         <h1>Book your trip with {guide.firstName}</h1>
         <h3>Details</h3>
         <p>Trip to {paramsLocation.location} from {paramsTimeframe.timeframe}</p>
-        <p>$45 per day
+        <p>${guide.guideDailyCost} per day
     </p>
 
     <p>3 days delivery

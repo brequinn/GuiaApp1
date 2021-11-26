@@ -25,9 +25,9 @@ export function TripCard( {guide} : {guide:any}) {
   
   >
     <Meta
-      avatar={<Avatar src="http://static4.businessinsider.com/image/559db20cecad04d238ab062d-400-300/getting-lost-around-havana-was-our-favorite-part-business-insiders-senior-video-producer-graham-flanagan-checked-a-map-while-front-end-developer-tyler-greenfield-wearing-a-matching-hat-spoke-to-a-cuban-man-on-the-street-the-local-was-trying-to-sell-them-black-market-currency.jpg" />}
+      avatar={<Avatar src={guide.guidePhoto} />}
       title={`Trip to ${guide.tripLocation}`}   
-      description= {`${guide.guideName} is your host for your trip to ${guide.guideLocation} from ${guide.tripTimeframe}`}  
+      description= {`${guide.guideFirstName} is your guide for your trip to ${guide.tripLocation} from ${guide.tripTimeframe}`}  
      
     />
   </Card>,
