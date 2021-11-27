@@ -15,7 +15,7 @@ import { getFirestore, collection, query, where, getDocs} from "firebase/firesto
 
 export function GuideResults() {
 const auth = getAuth();
-  var user = auth.currentUser;
+var user = auth.currentUser;
 const [data1, setData] = useState<any>([]);
 const history = useHistory();
 const paramsTimeframe = useParams<{timeframe?: string}>();
@@ -28,7 +28,7 @@ const paramsLocation = useParams<{location?: string}>();
     const querySnapshot = await getDocs(q);
     const result = querySnapshot.docs.map(doc=> doc.data());
 
-    
+
     setData(result);
    
   }

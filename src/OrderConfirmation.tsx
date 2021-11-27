@@ -30,6 +30,8 @@ export function OrderConfirmation() {
   const paramsTimeframe = useParams<{timeframe?: string}>();
   const paramsLocation = useParams<{location?: string}>();
 
+  var uniqid = Date.now();
+
   useEffect(() => {
     auth.onAuthStateChanged(async function(user) {
       getGuideDetail();
@@ -63,12 +65,13 @@ export function OrderConfirmation() {
         guideName: guide.guideName,
         guideFirstName: guide.firstName,
         travelerUID: user1.uid,
-        guideID: params.guidename,
+        guideID: params .guidename,
         guidePhoto: guide.photoURL,
         tripLocation: (paramsLocation.location),
         tripTimeframe: (paramsTimeframe.timeframe),
         tripDayLength: (daystoBook),
-        tripCost: (costPrice)
+        tripCost: (costPrice),
+        tripID: JSON.stringify(uniqid)
         
     })
     ))}
@@ -108,6 +111,7 @@ export function OrderConfirmation() {
         </h1>
         <div style={{marginLeft: 500}}>
         <img  src={guide.photoURL}/>
+       
         <h1>Book your trip with {guide.firstName}</h1>
         <h3>Details</h3>
         <p>Trip to {paramsLocation.location} from {paramsTimeframe.timeframe}</p>

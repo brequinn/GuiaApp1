@@ -1,0 +1,5 @@
+.container {
+    @media only screen and (min-width: 768px) {
+        max-width: calc(100% - 143px);
+    }
+}

@@ -12,7 +12,7 @@ export function TripCard( {guide} : {guide:any}) {
 
     return (
       <>
-  <Link to="/TripOverview">
+  <Link to={`/TripOverview/${guide.tripID}`}>
    
       <Card
     style={{ width: 300, marginLeft: 200 }}

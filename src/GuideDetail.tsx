@@ -14,12 +14,12 @@ import { getFirestore, collection, query, where, getDocs} from "firebase/firesto
 export function GuideDetail() {
   const auth = getAuth();
   var user = auth.currentUser;
-  const params = useParams<{guidename?: string}>();
+
   const [data1, setData] = useState<any>([]);
   const [guideName, setName] = useState<any>([]);
   const paramsTimeframe = useParams<{timeframe?: string}>();
   const paramsLocation = useParams<{location?: string}>();
-
+  const params = useParams<{guidename?: string}>();
   
   async function getGuideDetail() {
     const db = getFirestore();

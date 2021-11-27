@@ -53,6 +53,7 @@ useEffect(() => {
         className="h1">My Trips
         
         </h1>
+       
            
         <p className="descriptionText">
 

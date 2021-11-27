@@ -26,7 +26,7 @@ return (
                 
                 <Route path="/" component={Home} exact /> 
                 <Route path="/MyTrips" component={MyTrips} />
-                <Route path="/TripOverview" component={TripOverview} />
+                <Route path="/TripOverview/:tripid" component={TripOverview} />
                 <Route path="/searchResults/:location/:timeframe" component={GuideResults} />
                 <Route path="/guide/:guidename/:location/:timeframe" component={GuideDetail} />
                 <Route path="/:guidename/:location/:timeframe/confirmation" component={OrderConfirmation} />
