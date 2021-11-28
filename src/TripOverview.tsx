@@ -50,7 +50,7 @@ const params = useParams<{tripid?: string}>();
     <Header />
     {data1.map((guide: any) => (
    <div style={{marginLeft: 50}}>
-   {/* <h1>Trip Overview</h1>
+   <h1>Trip Overview</h1>
    <h3>Trip Location</h3>
    <h5>{guide.tripLocation}</h5>
    <h3>Timeframe</h3>
@@ -58,10 +58,14 @@ const params = useParams<{tripid?: string}>();
    <h3> Your host</h3>
     <h5>{guide.guideFirstName}</h5>  
     <h3> Total trip cost</h3>
-    <h5>${guide.tripCost}</h5> */}
-   
+    <h5>${guide.tripCost}</h5>
+    
+
+    <h1>Trip itineraries</h1>
+ 
+
     <div>
-      <Layout>
+      <Layout style={{backgroundColor: 'white'}}>
         <Row
           gutter={[0, 0]}
           style={{
@@ -75,14 +79,17 @@ const params = useParams<{tripid?: string}>();
             md={10}
             lg={10}
             style={{
-              backgroundColor: "#0D0D0D",
-              height: "100vh",
+              backgroundColor: "grey",
+              height: "80vh",
               display: "inline-block",
+              marginLeft: 1000,
+              marginTop: -290,
               overflow: "scroll",
             }}
             className="container"
           >
             <ChatOverview />
+           
           </Col>
           <ChannelBar />
         </Row>

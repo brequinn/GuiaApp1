@@ -8,6 +8,7 @@ export function ChannelBar() {
       gutter={[0, 0]}
       style={{
         position: "fixed",
+        marginRight: 0,
         bottom: "0",
         width: "100%",
       }}
