@@ -12,6 +12,7 @@ import { useFirestoreCollectionData, useFirestore } from "reactfire";
 import { Button, Input, message, Col } from "antd";
 import "../../css/sticky.css";
 import { PlayCircleOutlined, SendOutlined } from "@ant-design/icons";
+import { AnyARecord } from "dns";
 
 
 
@@ -23,24 +24,26 @@ var phantom = {
 };
 
 export function ChatOverview() {
-const paramsTripID = useParams<{tripid?: string}>();
+const paramsTripID = useParams<{tripid?: any}>();
 const auth = getAuth();
 var user = auth.currentUser;
 const [data1, setData] = useState<any>([]);
 
   useEffect(() => {
     getComments();
-    return () => {};
+    console.log("these are the comments" + JSON.stringify(data1));
+    // return () => {};
   }, []);
 
-  const params = useParams<{tripid?: string}>();
+  const params = useParams<{tripid?: any}>();
 
   async function getComments() {
-    console.log("getComments trip id is " + params.tripid)
+    console.log("getComments trip ids " + JSON.stringify(params.tripid))
     const db = getFirestore();
-    const q = query(collection(db, "trips", JSON.stringify(params.tripid), "comments"));
+    const q = query(collection(db, "trips", params.tripid, "comments"));
     const querySnapshot = await getDocs(q);
     const result = querySnapshot.docs.map(doc=> doc.data());
+    console.log("these are the result comments" + JSON.stringify(result));
     setData(result);
     console.log("these are the comments" + JSON.stringify(data1));
   }
@@ -63,13 +66,13 @@ const [data1, setData] = useState<any>([]);
   return (
     <>
       <div
-        style={{
+        style={{  
           paddingBottom: "160px",
         }}
       >
         <h1
           style={{
-            color: "black",
+            color: "white",
             marginTop: 20,
           }}
         >

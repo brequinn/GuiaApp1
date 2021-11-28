@@ -152,7 +152,7 @@ const authInstance = getAuth(firebaseApp);
                   </Menu.Item>
                   <Menu.Item>
                     <a
-                      href="www.bbc.com"
+                      href="https://k1xwbgus479.typeform.com/to/MiAyKOXn"
                       target="_blank"
                       rel="noreferrer"
                     >

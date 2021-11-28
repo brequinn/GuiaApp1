@@ -49,9 +49,6 @@ const auth = getAuth();
 
   const menu = (
     <Menu>
-      {/* <Menu.Item>
-        <a href="javascript:void(0)">Edit</a>
-      </Menu.Item> */}
       <Menu.Item>
         <a onClick={deleteComment} href="javascript:void(0)">
           Delete
@@ -110,7 +107,7 @@ const auth = getAuth();
           </span>
           <span
             style={{
-              color: "black",
+              color: "white",
               display: "block",
             }}
           >

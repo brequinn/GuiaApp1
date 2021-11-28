@@ -60,7 +60,7 @@ export function OrderConfirmation() {
     
      
      
-       addDoc(collection(db, "trips"),
+       setDoc(doc(db, "trips", JSON.stringify(uniqid)),
       {
         guideName: guide.guideName,
         guideFirstName: guide.firstName,
