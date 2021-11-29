@@ -6,17 +6,43 @@ import {
 import { useParams } from "react-router-dom";
 import "firebase/firestore";
 import { Button, Input, message, Col } from "antd";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import firebase from "firebase/app";
 import { PlayCircleOutlined, SendOutlined } from "@ant-design/icons";
+import { getFirestore, collection, query, where, getDocs, doc, setDoc, addDoc} from "firebase/firestore";
 
 export function ChatSendMessage() {
   const [commentText, setCommentText] = useState("");
   const [loading, setLoading] = useState(false);
   const user = useUser();
-  const params = useParams();
+  const [user1, setUser1] = useState<any>([]);
+  const params = useParams<{tripid?: any}>();
 
+  function addComment(e: { preventDefault: () => void; }) {
+    console.log("params trip id " + params.tripid)
+    console.log("user id is " + user1.uid)
+    const auth = getAuth();
+    auth.onAuthStateChanged(async function(user) {
+    setUser1(user);
+    const db = getFirestore();
+      e.preventDefault();
+      setLoading(true);
+    const x = Date.now();
+    await addDoc(collection(db, "trips", params.tripid, "comments"), {
+        commentText: commentText,
+        // createdOn: firebase.firestore.FieldValue.serverTimestamp(),
+        userID: user1.uid,
+        photoURL: user1.photoURL,
+        fullName: user1.displayName,
+    });
+  setLoading(false);
+     console.log("ba", x - Date.now());
 
-  async function addComment() {
+    setCommentText("");
+  });
+  }
+
+  // async function addComment() {
     // const db = useFirestore();
     // e.preventDefault();
     // setLoading(true);
@@ -38,7 +64,7 @@ export function ChatSendMessage() {
     // console.log("ba", x - Date.now());
 
     // setCommentText("");
-  }
+  // }
 
   return (
     <>

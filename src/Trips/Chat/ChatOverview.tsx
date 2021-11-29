@@ -6,7 +6,7 @@ import "firebase/firestore";
 import firebase from 'firebase/compat/app';
 import { useHistory } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { getFirestore, collection, query, where, getDocs, orderBy} from "firebase/firestore";
+import { getFirestore, collection, query, where, getDocs, orderBy, onSnapshot} from "firebase/firestore";
 import 'firebase/firestore';
 import { useFirestoreCollectionData, useFirestore } from "reactfire";
 import { Button, Input, message, Col } from "antd";
@@ -41,8 +41,10 @@ const [data1, setData] = useState<any>([]);
     console.log("getComments trip ids " + JSON.stringify(params.tripid))
     const db = getFirestore();
     const q = query(collection(db, "trips", params.tripid, "comments"));
+ 
     const querySnapshot = await getDocs(q);
     const result = querySnapshot.docs.map(doc=> doc.data());
+
     console.log("these are the result comments" + JSON.stringify(result));
     setData(result);
     console.log("these are the comments" + JSON.stringify(data1));
