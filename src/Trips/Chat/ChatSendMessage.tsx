@@ -9,7 +9,7 @@ import { Button, Input, message, Col } from "antd";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import firebase from "firebase/app";
 import { PlayCircleOutlined, SendOutlined } from "@ant-design/icons";
-import { getFirestore, collection, query, where, getDocs, doc, setDoc, addDoc} from "firebase/firestore";
+import { getFirestore, collection, query, where, getDocs, doc, setDoc, addDoc, updateDoc, serverTimestamp } from "firebase/firestore";
 
 export function ChatSendMessage() {
   const [commentText, setCommentText] = useState("");
@@ -19,21 +19,20 @@ export function ChatSendMessage() {
   const params = useParams<{tripid?: any}>();
 
   function addComment(e: { preventDefault: () => void; }) {
-    console.log("params trip id " + params.tripid)
-    console.log("user id is " + user1.uid)
     const auth = getAuth();
     auth.onAuthStateChanged(async function(user) {
-    setUser1(user);
+    // setUser1(user);
+    console.log(JSON.stringify(user?.uid));
     const db = getFirestore();
       e.preventDefault();
       setLoading(true);
     const x = Date.now();
     await addDoc(collection(db, "trips", params.tripid, "comments"), {
         commentText: commentText,
-        // createdOn: firebase.firestore.FieldValue.serverTimestamp(),
-        userID: user1.uid,
-        photoURL: user1.photoURL,
-        fullName: user1.displayName,
+        userID: user?.uid,
+        photoURL: user?.photoURL,
+        fullName: user?.displayName,
+        createdOn: serverTimestamp(),
     });
   setLoading(false);
      console.log("ba", x - Date.now());
@@ -41,30 +40,6 @@ export function ChatSendMessage() {
     setCommentText("");
   });
   }
-
-  // async function addComment() {
-    // const db = useFirestore();
-    // e.preventDefault();
-    // setLoading(true);
-    // var user = firebase.auth().currentUser;
-    // const x = Date.now();
-    // console.log("a");
-    // await db
-    //   .collection("channels")
-    //   .doc(params.channelid)
-    //   .collection("comments")
-    //   .add({
-    //     commentText,
-    //     createdOn: firebase.firestore.FieldValue.serverTimestamp(),
-    //     userID: user.uid,
-    //     photoURL: user.photoURL,
-    //     fullName: user.displayName,
-    //   });
-    // setLoading(false);
-    // console.log("ba", x - Date.now());
-
-    // setCommentText("");
-  // }
 
   return (
     <>

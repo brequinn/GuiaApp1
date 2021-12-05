@@ -32,30 +32,30 @@ const auth = getAuth();
 });
   }, []);
 
-  function deleteComment() {
-    // const db = getFirestore();
-    // db.collection("channels")
-    //   .doc(params.channelid)
-    //   .collection("comments")
-    //   .doc(comment.id)
-    //   .delete()
-    //   .then(() => {
-    //     message.success("Comment deleted!");
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error deleting comment: ", error);
-    //   });
-  }
+  // function deleteComment() {
+  //   // const db = getFirestore();
+  //   // db.collection("channels")
+  //   //   .doc(params.channelid)
+  //   //   .collection("comments")
+  //   //   .doc(comment.id)
+  //   //   .delete()
+  //   //   .then(() => {
+  //   //     message.success("Comment deleted!");
+  //   //   })
+  //   //   .catch((error) => {
+  //   //     console.error("Error deleting comment: ", error);
+  //   //   });
+  // }
 
-  const menu = (
-    <Menu>
-      <Menu.Item>
-        <a onClick={deleteComment} href="javascript:void(0)">
-          Delete
-        </a>
-      </Menu.Item>
-    </Menu>
-  );
+  // const menu = (
+  //   <Menu>
+  //     <Menu.Item>
+  //       <a onClick={deleteComment} href="javascript:void(0)">
+  //         Delete
+  //       </a>
+  //     </Menu.Item>
+  //   </Menu>
+  // );
 
   if (!currentUser) {
     return null;
@@ -114,8 +114,8 @@ const auth = getAuth();
             {comment.commentText}
           </span>
         </span>
-        {currentUser.uid === comment.userID && (
-          <Dropdown overlay={menu} placement="bottomRight">
+        {/* {currentUser.uid === comment.userID && (
+          <Dropdown  placement="bottomRight">
             <Button
               type="primary"
               shape="circle"
@@ -128,7 +128,7 @@ const auth = getAuth();
               }}
             />
           </Dropdown>
-        )}
+        )} */}
       </div>
       <h3
         style={{

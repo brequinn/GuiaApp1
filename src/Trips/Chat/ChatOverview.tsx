@@ -6,13 +6,14 @@ import "firebase/firestore";
 import firebase from 'firebase/compat/app';
 import { useHistory } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { getFirestore, collection, query, where, getDocs, orderBy, onSnapshot} from "firebase/firestore";
+import { getFirestore, collection, query, where, getDocs, orderBy, onSnapshot, CollectionReference, doc, collectionGroup} from "firebase/firestore";
 import 'firebase/firestore';
 import { useFirestoreCollectionData, useFirestore } from "reactfire";
 import { Button, Input, message, Col } from "antd";
 import "../../css/sticky.css";
 import { PlayCircleOutlined, SendOutlined } from "@ant-design/icons";
 import { AnyARecord } from "dns";
+import { orderByChild } from "firebase/database";
 
 
 
@@ -38,32 +39,16 @@ const [data1, setData] = useState<any>([]);
   const params = useParams<{tripid?: any}>();
 
   async function getComments() {
-    console.log("getComments trip ids " + JSON.stringify(params.tripid))
     const db = getFirestore();
-    const q = query(collection(db, "trips", params.tripid, "comments"));
- 
-    const querySnapshot = await getDocs(q);
-    const result = querySnapshot.docs.map(doc=> doc.data());
-
-    console.log("these are the result comments" + JSON.stringify(result));
+// const q = query(collectionRef, orderBy("timestamp", "desc"));  
+  const collectionRef = collection(db, "trips", params.tripid, "comments"); 
+    const q = query(collectionRef, orderBy("createdOn", "asc"));
+    onSnapshot(q, (snapshot) => {
+    const result = (snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
     setData(result);
-    console.log("these are the comments" + JSON.stringify(data1));
+  })
+    
   }
-
-//   function getComments() {
-//     const db = firebase.firestore();
-//     db.collection("channels")
-//       .doc(params.channelid)
-//       .collection("comments")
-//       .orderBy("createdOn", "asc")
-//       .onSnapshot((querySnapshot) => {
-//         const data = querySnapshot.docs.map((doc) => ({
-//           id: doc.id,
-//           ...doc.data(),
-//         }));
-//         setData(data);
-//       });
-//   }
 
   return (
     <>
