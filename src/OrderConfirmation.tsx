@@ -2,6 +2,7 @@ import { Button, Dropdown, Card, Avatar, Space, Select } from 'antd';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import "./css/Home.css";
 import firebase from 'firebase/compat/app';
+import { message } from 'antd';
 import { Header } from './Header';
 import React, { useEffect, Component, useState } from "react";
 import "./css/Home.css";
@@ -55,11 +56,12 @@ export function OrderConfirmation() {
   }
 
   function bookTrip(){
+    auth.onAuthStateChanged(async function(user) {
+      if(!user) {
+        message.warn('Please make sure you sign in to to book your trip');
+      } else { 
     const db = getFirestore();
     {data1.map((guide: any) => (
-    
-     
-     
        setDoc(doc(db, "trips", JSON.stringify(uniqid)),
       {
         guideName: guide.guideName,
@@ -71,13 +73,16 @@ export function OrderConfirmation() {
         tripTimeframe: (paramsTimeframe.timeframe),
         tripDayLength: (daystoBook),
         tripCost: (costPrice),
-        tripID: JSON.stringify(uniqid)
-        
+        tripID: JSON.stringify(uniqid)   
     })
     ))}
-    console.log ("Data sent")
-  
   }
+  });
+
+    console.log ("Data sent")
+  }
+
+
 
   function onLocationChange1(value: any) {
     console.log(`selected ${value}`);

@@ -142,7 +142,7 @@ import { useState } from "react";
                 marginRight: 24,
               }}
             >
-              Activity expert in: {guide.guideSpecialities}
+              Activity expert in: {guide.guideActivities}
             </h4>
           </div>
         </Link>

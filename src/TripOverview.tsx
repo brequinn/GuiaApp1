@@ -82,18 +82,18 @@ const params = useParams<{tripid?: string}>();
             lg={10}
             style={{
               backgroundColor: "grey",
-              height: "80vh",
+              position: 'fixed',
+              height: "100vh",
+              width: '700px',
               display: "inline-block",
-              marginLeft: 1000,
-     
+              marginLeft: 1030,
+              marginTop: -685,
               overflow: "scroll",
             }}
             className="container"
+          
           >
-            
             <ChatOverview />
-      
-           
           </Col>
           <ChannelBar />
         </Row>

@@ -55,12 +55,13 @@ const [data1, setData] = useState<any>([]);
       <div
         style={{  
           paddingBottom: "160px",
+          marginLeft: 20
         }}
       >
         <h1
           style={{
             color: "white",
-            marginTop: 20,
+            marginTop: 20
           }}
         >
           Chat

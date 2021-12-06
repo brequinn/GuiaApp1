@@ -52,7 +52,7 @@ export function ChatSendMessage() {
         placeholder="Write your message"
         style={{
           height: "100%",
-          width: "calc(100% - 80px)",
+          width: "605px",
           borderRadius: "0",
           backgroundColor: "#F0F0F0",
           border: "none",
