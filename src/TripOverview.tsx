@@ -10,6 +10,7 @@ import 'firebase/firestore';
 import moment from 'moment';
 import { ChatOverview } from './Trips/Chat/ChatOverview';
 import { ChannelBar } from './Trips/Chat/ChannelBar';
+import { ItineraryCard } from './Trips/ItineraryCard';
 import { initializeApp } from "firebase/app";
 import { useHistory, useParams } from 'react-router-dom';
 import { getFirestore, collection, query, where, getDocs} from "firebase/firestore";
@@ -35,11 +36,6 @@ const params = useParams<{tripid?: string}>();
     console.log(JSON.stringify(data1));
   }
 
-  function yes(){
-    getTripInfo();
-    console.log(JSON.stringify(data1));
-  }
-
   useEffect(() => {
    getTripInfo();
    console.log(params.tripid)
@@ -61,18 +57,24 @@ const params = useParams<{tripid?: string}>();
     <h5>${guide.tripCost}</h5>
     
 
-    <h1>Trip itineraries</h1>
- 
+   
 
     <div>
+  
       <Layout style={{backgroundColor: 'white'}}>
+      
+    <div style={{marginTop: 50}}>
+    <h1>Trip itinerary</h1>
+    <ItineraryCard />
+    </div>
+
         <Row
           gutter={[0, 0]}
           style={{
             height: "calc(100vh - 72px - 56px)",
           }}
         >
-       
+      
           <Col
             xs={24}
             sm={24}
@@ -83,12 +85,14 @@ const params = useParams<{tripid?: string}>();
               height: "80vh",
               display: "inline-block",
               marginLeft: 1000,
-              marginTop: -290,
+     
               overflow: "scroll",
             }}
             className="container"
           >
+            
             <ChatOverview />
+      
            
           </Col>
           <ChannelBar />
