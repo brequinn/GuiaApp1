@@ -4,18 +4,24 @@ import React from 'react';
 import firebase from 'firebase/compat/app';
 import { Link, useParams } from "react-router-dom";
 import { Header } from '../Header';
+import { url } from 'inspector';
 
 
 export function ItineraryCard() {
 
     const { Meta } = Card;
+    function openLink() {
+      
+      window.open("www.bbc.com", "_blank")
+    }
 
     return (
       <>
-  {/* <Link to={`/TripOverview/${guide.tripID}`}> */}
+  
    
       <Card
-    style={{ width: 300, marginLeft: 0, cursor: 'pointer' }}
+   onClick={openLink}
+   style={{ width: 300, marginLeft: 0, cursor: 'pointer' }}
     cover={
       <img
         alt="example"
@@ -31,7 +37,6 @@ export function ItineraryCard() {
      
     />
   </Card>,
-  {/* </Link> */}
       </>
     );
   }
