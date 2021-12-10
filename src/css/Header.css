@@ -11,8 +11,8 @@ body {
     align-items: center;
     background: #1d1751;
     color: white;
-    font-family: Philosopher;
-    font-weight: 300;
+    font-family: 'Poppins';
+    font-weight: 400;
   }
   
   .navbar__title {
@@ -25,11 +25,6 @@ body {
   .navbar__item {
     padding: 16px 16px;
     cursor: pointer;
-    font-family: Philosopher;
+    font-family: 'Poppins';
     vertical-align: middle;
-  }
-
-  .h1 {
-    color: #599B67;
-    font-family: Philosopher-Regular;
   }
