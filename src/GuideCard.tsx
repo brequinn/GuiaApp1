@@ -34,18 +34,15 @@ import { useState } from "react";
       <Col
         xs={24}
         sm={12}
-        md={6}
-        lg={6}
+        md={12}
+        lg={12}
         style={{
-          marginBottom: 40,
-          marginLeft: 150,
-          marginTop: 50
         }}
       >
         <Link to={`/guide/${guide.IDtag}/${paramsLocation.location}/${paramsTimeframe.timeframe}`}>
           <div
             style={{
-              background: `linear-gradient(180deg, rgba(2, 9, 19, 0) 0%, rgba(2, 9, 19, 0.9) 100%), url(${guide.photoURL})`,
+              background: `url(${guide.photoURL})`,
               borderRadius: "10px 10px 0 0",
               paddingBottom: "48%",
               backgroundSize: "cover",
@@ -58,13 +55,9 @@ import { useState } from "react";
                 background: "rgba(255, 255, 255, 0.25)",
                 display: "inline-block",
                 color: "black",
-                right: 24,
-                top: 16,
-                position: "absolute",
               }}
             >
               <img src={''} />{" "}
-              {/* {Math.floor(Math.random() * (999 - 100 + 1) + 100)} */}
             </span>
           </div>
   
@@ -98,23 +91,6 @@ import { useState } from "react";
                   {guide.guideDescription}
                   
                 </h4>
-              </Col>
-  
-              <Col span={7}>
-                {/* <button
-                  style={{
-                    padding: "4px 12px",
-                    background: "#FFD80E",
-                    borderRadius: "200px",
-                    border: "none",
-                    fontSize: "14px",
-                    fontWeight: 500,
-                    color: "#000",
-                    float: "right",
-                  }}
-                >
-                  Open
-                </button> */}
               </Col>
           
             </Row>
