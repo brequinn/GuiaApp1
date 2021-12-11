@@ -1,4 +1,4 @@
-import { Input, Space, Dropdown, Button, Menu, Select } from 'antd';
+import { Input, Space, Dropdown, Button, Menu, Select, Row, Col } from 'antd';
 import { DatePicker } from 'antd';
 import moment from 'moment';
 import React from 'react';
@@ -9,6 +9,9 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { message } from 'antd';
+import { url } from 'inspector';
+import { BgColorsOutlined } from '@ant-design/icons';
+import background  from './images/guia-bg.jpg'
 
 export function Home() {
 
@@ -95,70 +98,104 @@ const [userProfile, setuserProfile] = useState<any>([]);
      data-your_own_param_1_to_login="any_value"
      data-your_own_param_2_to_login="any_value">
     </div>
-      <div> 
-            <h1   
-            
-        className="h1">Discover
-        
-        </h1>
-           
-        <p className="descriptionText">
-         The better way to travel. Find an expert guide to help you plan your trip. 
-        <p>
-       
-         Travel more, plan less! 
-      
-        </p>
-        </p>
-        <div style={{
-               marginLeft: 550,
-             
-             }} >
- <Space style={{marginLeft: 100}} direction="vertical" >
-    <Select
-    showSearch
-    style={{ width: 260 }}
-    placeholder="Where are you traveling to?"
-    optionFilterProp="locations"
-    onChange={onLocationChange1}
-    onFocus={onFocus}
-    onBlur={onBlur}
-    onSearch={onSearch}
-  >
-    <Option value="New York City">New York City</Option>
-   
-  </Select>
-  </Space>
-  <div style={{marginTop: 20, marginLeft: 100}}>
-<RangePicker
-      format={dateFormat} onChange={onTimeChange} 
-    />
-      </div>
-        </div>
-      
-        
-        <div>
-          <Button type="primary"
-          size="large"
-          onClick={checkData}
+      <div 
+        style={{
+          backgroundImage: "url(" + background + ")",
+          maxWidth: 1140,
+          margin: "auto",
+          backgroundSize: "cover",
+          borderRadius: 20,
+          display: "flex",
+          alignItems: "center",
+          textAlign: "center",
+          height: 380,
+          paddingBottom: 32,
+          marginTop: 32
+        }}
+      > 
+        <div
           style={{
-            marginBottom: 16,
-            marginRight: 8,
-            top: 8,
-            borderRadius: 200,
-            marginLeft: 750,
-            marginTop: 20,
-            color: "white",
-            border: "none",
-            padding: "8px 28px",
-            backgroundColor: "#599B67",
-          }}>Search</Button>
-    
+            margin: "32px auto",
+          }}
+        >
+              <h1 
+                className="h1"
+                style={{
+                  fontSize: 64,
+                  lineHeight: "72px",
+                  color: "#fff"
+                }}
+              >
+                The better<br></br> way to travel.
+              </h1>
+            
+          <p className="descriptionText"
+            style={{
+              fontSize: 18,
+              color: "#fff"
+            }}
+          >
+          Find an expert guide to help you plan your trip.
+          </p>
         </div>
-        {/* </Link> */}
-       <div className="getStartedButton">
-      
-        </div>
+      </div>
+      <Row 
+      gutter={16}
+      style={{
+        maxWidth: 900,
+        margin: "auto",
+        borderRadius: 20,
+        padding: 24,
+        boxShadow: "0px 27px 201px rgba(0, 0, 0, 0.07), 0px 17.5px 117.715px rgba(0, 0, 0, 0.0531481), 0px 10.4px 64.0222px rgba(0, 0, 0, 0.0425185), 0px 5.4px 32.6625px rgba(0, 0, 0, 0.035), 0px 2.2px 16.3778px rgba(0, 0, 0, 0.0274815), 0px 0.5px 7.90972px rgba(0, 0, 0, 0.0168519)",
+        marginTop: -48,
+        background: "#fff"
+      }}
+      >
+        <Col span={10} >
+          <h3>Location</h3>
+          <Select
+            showSearch
+            style={{ width: "100%", borderColor: "#599B67" }}
+            placeholder="Where are you traveling to?"
+            optionFilterProp="locations"
+            onChange={onLocationChange1}
+            onFocus={onFocus}
+            onBlur={onBlur}
+            onSearch={onSearch}
+            size="large"
+          >
+            <Option value="New York City">New York City</Option>
+          
+          </Select>
+        </Col>
+        <Col span={10}>
+          <h3>Dates</h3>
+          <RangePicker format={dateFormat} onChange={onTimeChange} size="large"
+          />
+        </Col>
+        <Col span={4}
+          style={{
+            display: "flex",
+            alignItems: "end"
+          }}
+        >
+          <Button type="primary"
+            size="large"
+            onClick={checkData}
+            style={{
+              borderRadius: 200,
+              color: "white",
+              border: "none",
+              padding: "8px 28px",
+              backgroundColor: "#599B67",
+            }}>Search</Button>
+        </Col>
+      </Row>
+      <div style={{
+        
+      }}>
+
+
       </div>
       </>
     );

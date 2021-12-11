@@ -6,6 +6,7 @@ import { Loading } from "./Loading";
 import { GuideCard } from "./GuideCard";
 import { Header } from './Header';
 import { FileAddOutlined } from "@ant-design/icons";
+import * as dayjs from "dayjs";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import 'firebase/firestore';
 import moment from 'moment';
@@ -32,7 +33,7 @@ const paramsLocation = useParams<{location?: string}>();
     setData(result);
    
   }
-  const daDate = moment(paramsTimeframe.timeframe).format('MMMM Do YYYY, h:mm:ss a');
+  const daDate = dayjs(paramsTimeframe.timeframe * 1000).format("MMMM DD, HH:mm");
 
   useEffect(() => {
       getGuides();
@@ -43,8 +44,23 @@ const paramsLocation = useParams<{location?: string}>();
   return (  
     <>
     <Header />
-    <h1>Showing guides for {paramsLocation.location} from {paramsTimeframe.timeframe} </h1>
-
+    <div 
+      style={{
+        maxWidth: 1140,
+        width: "100%",
+        margin: "auto"
+      }}
+      > 
+    <h1>Showing guides for {paramsLocation.location} from {daDate} </h1>
+    
+    </div>
+    <Row gutter={16}
+      style={{
+        maxWidth: 1140,
+        width: "100%",
+        margin: "auto"
+      }}
+    >
 {data1.map((guide: any) => (
         
         <GuideCard
@@ -52,9 +68,10 @@ const paramsLocation = useParams<{location?: string}>();
           key={guide}
         />
       ))}   
-    
+    </Row>
     </>
   );
+  
 }
 
   export default GuideResults;
