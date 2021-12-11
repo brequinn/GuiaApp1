@@ -6,7 +6,7 @@ import { Loading } from "./Loading";
 import { GuideCard } from "./GuideCard";
 import { Header } from './Header';
 import { FileAddOutlined } from "@ant-design/icons";
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import 'firebase/firestore';
 import moment from 'moment';
@@ -19,7 +19,7 @@ const auth = getAuth();
 var user = auth.currentUser;
 const [data1, setData] = useState<any>([]);
 const history = useHistory();
-const paramsTimeframe = useParams<{timeframe?: string}>();
+const paramsTimeframe = useParams<{timeframe?: any}>();
 const paramsLocation = useParams<{location?: string}>();
 
   async function getGuides() {
