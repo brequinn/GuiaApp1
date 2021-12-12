@@ -60,7 +60,7 @@ export function GuideDetail() {
            <div>
            <Card size="small" title="Booking price" style={{ width: 400 }}>
       <p>${guide.guideDailyCost} per day</p>
-      <p>3 Days Delivery</p>
+      <p>{guide.deliveryTimeFrame} Days Delivery</p>
       <RedoOutlined />
       <p>2 revisions</p>
     
