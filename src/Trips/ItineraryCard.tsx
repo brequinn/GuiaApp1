@@ -1,18 +1,15 @@
 import { Card, Avatar } from 'antd';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import React from 'react';
-import firebase from 'firebase/compat/app';
-import { Link, useParams } from "react-router-dom";
-import { Header } from '../Header';
-import { url } from 'inspector';
+import { Link } from 'react-router-dom'
 
 
 export function ItineraryCard() {
 
     const { Meta } = Card;
     function openLink() {
-      
-      window.open("www.bbc.com", "_blank")
+    
+      window.open("https://docs.google.com/document/d/1cJVIIuss7w9toTB5cRpwLLPP0EPyeXJmka0mdQuYlmA/edit?usp=sharing", "_blank")
     }
 
     return (
@@ -33,7 +30,6 @@ export function ItineraryCard() {
     <Meta
     //   avatar={<Avatar src={guide.guidePhoto} />}
       title="Itinerary for New York City"  
-      description= "Click to view"  
      
     />
   </Card>,
