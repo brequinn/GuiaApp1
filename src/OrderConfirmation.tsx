@@ -69,6 +69,7 @@ export function OrderConfirmation() {
         travelerUID: user1.uid,
         guideID: params .guidename,
         guidePhoto: guide.photoURL,
+        TripItineraryLink: "https://tripadvisor.com",
         tripLocation: (paramsLocation.location),
         tripTimeframe: (paramsTimeframe.timeframe),
         tripDayLength: (daystoBook),

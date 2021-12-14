@@ -65,7 +65,7 @@ const params = useParams<{tripid?: string}>();
       
     <div style={{marginTop: 50}}>
     <h1>Trip itinerary</h1>
-    <ItineraryCard />
+    <ItineraryCard  guide={guide} key={guide} />
     </div>
 
         <Row

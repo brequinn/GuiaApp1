@@ -4,12 +4,13 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 
-export function ItineraryCard() {
+export function ItineraryCard( {guide} : {guide:any}) {
 
     const { Meta } = Card;
     function openLink() {
     
-      window.open("https://docs.google.com/document/d/1cJVIIuss7w9toTB5cRpwLLPP0EPyeXJmka0mdQuYlmA/edit?usp=sharing", "_blank")
+      window.open(`${guide.TripItineraryLink}`, "_blank")
+      
     }
 
     return (
@@ -29,7 +30,7 @@ export function ItineraryCard() {
   >
     <Meta
     //   avatar={<Avatar src={guide.guidePhoto} />}
-      title="Itinerary for New York City"  
+      title="Trip Itinerary"  
      
     />
   </Card>,
