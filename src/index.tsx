@@ -7,6 +7,7 @@ import { getAuth } from 'firebase/auth'; // Firebase v9+
 import { getDatabase } from 'firebase/database'; // Firebase v9+
 import { FirebaseAppProvider, AuthProvider, useFirebaseApp } from 'reactfire';
 import 'antd/dist/antd.css';
+import "./index.scss";
 import { initializeApp } from 'firebase/app';
 import firebase from 'firebase/compat/app';
 import { BrowserRouter, Route, Switch, useLocation } from 'react-router-dom';

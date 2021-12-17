@@ -118,7 +118,7 @@ const authInstance = getAuth(firebaseApp);
         {/* <Logo /> */}
         <Link to="/" 
         style={{
-          width: 300
+          width: "300px"
         }}
         >
           <Space direction="horizontal" size="middle">
@@ -146,7 +146,7 @@ const authInstance = getAuth(firebaseApp);
 
         { user34 ?
           <div style={{ marginLeft: "auto" }}>
-            <Space direction="horizontal" size="middle">
+            <Space direction="horizontal" size="middle" style={{width: 300,justifyContent: "end"}}>
               <Dropdown
                 trigger={["click"]}
                 overlayStyle={{ paddingTop: 16, marginLeft: -100 }}

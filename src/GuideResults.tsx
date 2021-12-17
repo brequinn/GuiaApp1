@@ -44,7 +44,8 @@ const paramsLocation = useParams<{location?: string}>();
   return (  
     <>
     <Header />
-    <div 
+    <div
+      className='container'
       style={{
         maxWidth: 1140,
         width: "100%",
@@ -53,10 +54,8 @@ const paramsLocation = useParams<{location?: string}>();
       > 
     <h1>Showing guides for {paramsLocation.location} from {daDate} </h1>
     
-    </div>
     <Row gutter={16}
       style={{
-        maxWidth: 1140,
         width: "100%",
         margin: "auto"
       }}
@@ -69,6 +68,7 @@ const paramsLocation = useParams<{location?: string}>();
         />
       ))}   
     </Row>
+        </div>
     </>
   );
   
