@@ -85,7 +85,7 @@ import { useState } from "react";
                   style={{
                     color: "black",
                     opacity: "0.6",
-                    // fontWeight: "400",
+                    fontWeight: "normal"
                   }}
                 >
                   {guide.guideDescription}

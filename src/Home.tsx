@@ -101,16 +101,13 @@ const [userProfile, setuserProfile] = useState<any>([]);
       <div 
         style={{
           backgroundImage: "url(" + background + ")",
-          maxWidth: 1140,
           margin: "auto",
           backgroundSize: "cover",
-          borderRadius: 20,
           display: "flex",
           alignItems: "center",
           textAlign: "center",
           height: 380,
           paddingBottom: 32,
-          marginTop: 32
         }}
       > 
         <div
@@ -121,8 +118,8 @@ const [userProfile, setuserProfile] = useState<any>([]);
               <h1 
                 className="h1"
                 style={{
-                  fontSize: 64,
                   lineHeight: "72px",
+                  fontSize: "56px",
                   color: "#fff"
                 }}
               >
@@ -145,17 +142,17 @@ const [userProfile, setuserProfile] = useState<any>([]);
         maxWidth: 900,
         margin: "auto",
         borderRadius: 20,
-        padding: 24,
+        padding: "24px 24px 16px 24px",
         boxShadow: "0px 27px 201px rgba(0, 0, 0, 0.07), 0px 17.5px 117.715px rgba(0, 0, 0, 0.0531481), 0px 10.4px 64.0222px rgba(0, 0, 0, 0.0425185), 0px 5.4px 32.6625px rgba(0, 0, 0, 0.035), 0px 2.2px 16.3778px rgba(0, 0, 0, 0.0274815), 0px 0.5px 7.90972px rgba(0, 0, 0, 0.0168519)",
         marginTop: -48,
         background: "#fff"
       }}
       >
-        <Col span={10} >
+        <Col xs={24} sm={24} md={10} lg={10}>
           <h3>Location</h3>
           <Select
             showSearch
-            style={{ width: "100%", borderColor: "#599B67" }}
+            style={{ width: "100%", borderColor: "#599B67", marginBottom: "16px" }}
             placeholder="Where are you traveling to?"
             optionFilterProp="locations"
             onChange={onLocationChange1}
@@ -169,12 +166,16 @@ const [userProfile, setuserProfile] = useState<any>([]);
           
           </Select>
         </Col>
-        <Col span={10}>
+        <Col xs={24} sm={24} md={10} lg={10}>
           <h3>Dates</h3>
-          <RangePicker format={dateFormat} onChange={onTimeChange} size="large"
+          <RangePicker format={dateFormat} onChange={onTimeChange} size="large" 
+          style={{
+            width: "100%",
+            marginBottom: "16px"
+          }}
           />
         </Col>
-        <Col span={4}
+        <Col xs={24} sm={24} md={4} lg={4}
           style={{
             display: "flex",
             alignItems: "end"
@@ -188,6 +189,8 @@ const [userProfile, setuserProfile] = useState<any>([]);
               color: "white",
               border: "none",
               padding: "8px 28px",
+              marginBottom: "16px",
+              width: "100%",
               backgroundColor: "#599B67",
             }}>Search</Button>
         </Col>
