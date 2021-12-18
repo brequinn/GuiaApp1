@@ -55,6 +55,13 @@ export function OrderConfirmation() {
       });
   }
 
+  function more()
+  {
+    auth.onAuthStateChanged(async function(user) {
+    console.log(JSON.stringify(user));
+  });
+  }
+
   function bookTrip(){
     auth.onAuthStateChanged(async function(user) {
       if(!user) {
@@ -67,6 +74,8 @@ export function OrderConfirmation() {
         guideName: guide.guideName,
         guideFirstName: guide.firstName,
         travelerUID: user1.uid,
+        travelerName: user1.displayName,
+        travelerPhoto: user1.photoURL,
         guideID: params .guidename,
         guidePhoto: guide.photoURL,
         TripItineraryLink: "https://tripadvisor.com",
@@ -120,6 +129,7 @@ export function OrderConfirmation() {
        
         <h1>Book your trip with {guide.firstName}</h1>
         <h3>Details</h3>
+        <Button onClick={more}>hi</Button>
         <p>Trip to {paramsLocation.location} from {paramsTimeframe.timeframe}</p>
         <p>${guide.guideDailyCost} per day
     </p>

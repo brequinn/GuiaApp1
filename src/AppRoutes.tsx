@@ -17,6 +17,9 @@ import {
     useLocation,
     Redirect,
   } from "react-router-dom";
+import GuideTripOverview from "./GuideDashboard/GuideTripOverview";
+import GuideTripDetail from "./GuideDashboard/GuideTripDetail";
+
 
 export function AppRoutes() {
 
@@ -26,6 +29,8 @@ return (
                 
                 <Route path="/" component={Home} exact /> 
                 <Route path="/MyTrips" component={MyTrips} />
+                <Route path="/GuideTrips" component={GuideTripOverview} />
+                <Route path="/tripDetail/:tripid" component={GuideTripDetail} />
                 <Route path="/TripOverview/:tripid" component={TripOverview} />
                 <Route path="/searchResults/:location/:timeframe" component={GuideResults} />
                 <Route path="/guide/:guidename/:location/:timeframe" component={GuideDetail} />

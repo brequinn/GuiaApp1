@@ -156,6 +156,9 @@ const authInstance = getAuth(firebaseApp);
                     Account information
                     </Menu.Item>
                     <Menu.Item>
+            <a href="/GuideTrips">Guide dashboard</a>
+          </Menu.Item>
+                    <Menu.Item>
                       <a
                         href="https://k1xwbgus479.typeform.com/to/MiAyKOXn"
                         target="_blank"
