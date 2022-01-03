@@ -13,6 +13,8 @@ import moment from 'moment';
 import { initializeApp } from "firebase/app";
 import { useHistory, useParams } from 'react-router-dom';
 import { getFirestore, collection, query, where, getDocs} from "firebase/firestore";
+var customParseFormat = require('dayjs/plugin/customParseFormat')
+dayjs.extend(customParseFormat)
 
 export function GuideResults() {
 const auth = getAuth();
@@ -33,7 +35,7 @@ const paramsLocation = useParams<{location?: string}>();
     setData(result);
    
   }
-  const daDate = dayjs(paramsTimeframe.timeframe * 1000).format("MMMM DD, HH:mm");
+  const daDate = dayjs(paramsTimeframe.timeframe.split(',')[0]).format("MMM DD")+ " to " +dayjs(paramsTimeframe.timeframe.split(',')[1]).format("MMM DD");
 
   useEffect(() => {
       getGuides();
