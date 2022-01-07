@@ -1,4 +1,4 @@
-import { Input, Space, Dropdown, Button, Menu, Select, Row, Col } from 'antd';
+import { Input, Space, Dropdown, Button, Menu, Select, Row, Col, Collapse } from 'antd';
 import { DatePicker } from 'antd';
 import moment from 'moment';
 import React from 'react';
@@ -12,6 +12,8 @@ import { message } from 'antd';
 import { url } from 'inspector';
 import { BgColorsOutlined } from '@ant-design/icons';
 import background  from './images/guia-bg.jpg'
+
+const { Panel } = Collapse;
 
 export function Home() {
 
@@ -106,7 +108,7 @@ const [userProfile, setuserProfile] = useState<any>([]);
           display: "flex",
           alignItems: "center",
           textAlign: "center",
-          height: 380,
+          height: "50vh",
           paddingBottom: 32,
         }}
       > 
@@ -136,10 +138,11 @@ const [userProfile, setuserProfile] = useState<any>([]);
           </p>
         </div>
       </div>
+      <div
+        className="container">
       <Row 
       gutter={16}
       style={{
-        maxWidth: 900,
         margin: "auto",
         borderRadius: 20,
         padding: "24px 24px 16px 24px",
@@ -195,10 +198,42 @@ const [userProfile, setuserProfile] = useState<any>([]);
             }}>Search</Button>
         </Col>
       </Row>
-      <div style={{
-        
-      }}>
-
+      </div>
+      <div
+        className='container'
+      >
+        <h2
+          className="h3"
+          style={{
+            marginTop: "24px",
+            fontSize: "32px",
+            textAlign: "center",
+            color: "#4C6448"
+          }}
+        >
+          FAQs
+        </h2>
+        <Collapse
+          style={{
+            borderRadius: "20px",
+            borderBottom: "none"
+          }}
+        >
+          <Panel
+            header="What is Guia?" key="1"
+          >
+            <p>Sartorial truffaut schlitz, glossier umami affogato four dollar toast fingerstache cred. Four loko banh mi put a bird on it meggings blue bottle austin viral blog messenger bag affogato humblebrag. Copper mug cliche pork belly chambray, vaporware subway tile locavore artisan. Raw denim put a bird on it retro skateboard aesthetic. Food truck actually ramps, church-key cray +1 leggings chambray.</p>
+          </Panel>
+          <Panel header="What to I make a booking?" key="2">
+            <p>Vaporware pabst portland literally, listicle ramps iPhone la croix 3 wolf moon gochujang whatever. Organic gentrify plaid, cold-pressed literally pabst bushwick trust fund hell of. Meh copper mug leggings health goth kombucha.</p>
+          </Panel>
+          <Panel header="How can I become a host?" key="3">
+            <p>hambray mixtape godard wayfarers fingerstache. Austin kombucha gentrify, craft beer health goth vaporware food truck mixtape hot chicken 90's coloring book try-hard la croix subway tile skateboard. Listicle gluten-free letterpress tousled</p>
+          </Panel>
+          <Panel header="I want to joing to BETA, how do I do that?" key="3">
+            <p>Trust fund bicycle rights beard 3 wolf moon pug distillery skateboard waistcoat hot chicken ennui. Fashion axe vice live-edge pug. Sriracha marfa vexillologist mixtape taxidermy organic sartorial.</p>
+          </Panel>
+        </Collapse>
 
       </div>
       </>

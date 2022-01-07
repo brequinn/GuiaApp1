@@ -42,9 +42,9 @@ export function GuideDetail() {
        {data1.map((guide: any) => (
              <div>  
        <Header />
-      <div style={{marginLeft: 30}}> 
-      <div>
-      <img style={{marginLeft: 650}} src={guide.photoURL}/>
+      
+      <img style={{width: "100%" }} src={guide.photoURL}/>
+      <div className='container'>
             <h1   
             
         className="h1">  {guide.guideName}
@@ -73,7 +73,6 @@ export function GuideDetail() {
            </div>
          
       </div>
-      </div> 
          ))} 
       </>
         
