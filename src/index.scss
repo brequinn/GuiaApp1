@@ -51,3 +51,35 @@ code {
     margin-top: 16px;
   }
 }
+// guide cards 
+.result-row h3 {
+  font-weight: 400;
+}
+.specialities {
+  margin-top: 16px;
+  margin-bottom: 16x;
+}
+.specialities span {
+  margin-right: 4px;
+  font-weight: 500;
+  background-color: #3583460f;
+  padding: 4px 12px;
+  border-radius: 200px;
+  color: #358346;
+  border: solid 1px #358346;
+}
+.guide-features img {
+  width: 32px;
+  height: 32px;
+  margin-right: 12px;
+}
+.guide-features .showmore {
+  display: block;
+  margin-top: 24px;
+  padding: 4px 12px;
+  border-radius: 200px;
+  border: solid 1px #eaeaea;
+  text-align: center;
+  color: #666666;
+  font-size: 14px;
+}

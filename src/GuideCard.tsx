@@ -7,7 +7,14 @@ import { UserOutlined } from "@ant-design/icons";
   import firestore from "./firestore";
   import { useHistory } from 'react-router-dom';
   import "./css/ImageTile.css";
-import { useState } from "react";
+  import { useState } from "react";
+  import cocktailIcon from'./images/cocktail.svg';
+  import museumIcon from'./images/museums.svg';
+  import jazzIcon from'./images/jazz.svg';
+  import beerIcon from'./images/beer.svg';
+  import clubIcon from'./images/club.svg';
+  import hikeIcon from'./images/hike.svg';
+  import guideIcon from'./images/guide.svg';
 
   
   export function GuideCard( {guide} : {guide:any}) {
@@ -63,11 +70,11 @@ import { useState } from "react";
               </div>
           </Col>
           <Col
-            xs={24}
-            sm={24}
-            md={11}
-            lg={11}
-          >
+            xs={{ span: 24 }}
+            sm={{ span: 24 }}
+            md={{ span: 10 }}
+            lg={{ span: 10 }}
+          > 
             <div
               className="card-copy"
               style={{
@@ -76,14 +83,31 @@ import { useState } from "react";
               }}
             >
               <Row>
-                <Col>
+                <Col className="result-row">
                   <h3
                     style={{
                       color: "black",
-                      fontSize: "18px"                    
+                      fontSize: "18px"
                     }}
-                  >
-                    <img style={{ borderRadius: "200px", marginRight: "8px", width: "32px", height: "32px" }} src="avatar"/>{guide.guideName}
+                  > 
+                    {/* PLACEHOLDER AVATAR IMAGE */}
+                    <div 
+                      style={{
+                        justifyContent: "center",
+                        backgroundColor: "#569764",
+                        borderRadius: "200px",
+                        marginRight: "10px",
+                        width: "32px",
+                        height: "32px",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        color: "#fff",
+
+                      }}>
+                      {guide.guideName.charAt(0)}
+                    </div>
+                    {/* END PLACEHOLDER */}
+                    {guide.guideName}
                   </h3>
                   <h4
                     style={{
@@ -103,8 +127,9 @@ import { useState } from "react";
           <Col
           xs={24}
           sm={24}
-          md={7}
-          lg={7}
+          md={{ span: 6, offset: 2 }}
+          lg={{ span: 6, offset: 2 }}
+          className="guide-features"
           >
             <h4
               style={{
@@ -118,15 +143,21 @@ import { useState } from "react";
                 style={{ fontSize: "12px", fontWeight: "normal" }}
                 className="specialities"
               >
-                <div dangerouslySetInnerHTML={{ __html: specialities.replace(/Solo/gi, '<img src="icon-solo.png" />Solo').replace(/Couples/gi, '<img src="icon-couples.png" />Couples').replace(/travelers/gi, '<img src="icon-travelers.png" />Travelers') }} />
+                <div dangerouslySetInnerHTML={{ __html: specialities.replace(/Solo/gi, '<span>Solo</span>').replace(/Couples/gi, '<span>Couples</span>').replace(/travelers/gi, '<span>Travelers</span>').replace(',','') }} />
               </p>
             <h4
               style={{
                 color: "black",
+                opacity: "0.6",
+                marginTop: "24px",
+                marginBottom: "12px"
               }}
             >
-              Activity expert in: {guide.guideActivities}
+              Activity expert in:
             </h4>
+            <p>
+              <div dangerouslySetInnerHTML={{ __html: guide.guideActivities.replace(/bars/gi, '<img src="'+ cocktailIcon +'" />').replace(/museums/gi, '<img src="'+ museumIcon +'" />').replace(/Jazz/gi, '<img src="'+ jazzIcon +'" />').replace(/breweries/gi, '<img src="'+ beerIcon +'" />').replace(/clubs/gi, '<img src="'+ clubIcon +'" />').replace(/off the beaten path/gi, '<img src="'+ hikeIcon +'" />').replace(/tours/gi, '<img src="'+ guideIcon +'" />').replace(/And more!/gi, '<span class="showmore">+ And more</span>').replace(", ","") }} />
+            </p>
           </Col>
           </Row>
         </Link>
