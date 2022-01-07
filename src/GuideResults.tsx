@@ -78,7 +78,7 @@ const paramsLocation = useParams<{location?: string}>();
             margin: "0px 5px"
           }}
         >
-          <span className="hide-mob">Showing guides for</span><span className="medium" style={{color: "#fff"}}>{paramsLocation.location}</span> from <span className="medium" style={{color: "#fff"}}>{daDate}</span>
+          <span className="hide-mob">Showing guides for </span><span className="medium" style={{color: "#fff"}}>{paramsLocation.location}</span> from <span className="medium" style={{color: "#fff"}}>{daDate}</span>
         </h1>
         <Button type="link" href="/" shape="circle" style={{margin: "0px 5px", backgroundColor: "#fff", color: "#000", borderColor: "#fff" }} icon={<EditOutlined style={{marginTop: "6px"}} />} ></Button>
       </div>
