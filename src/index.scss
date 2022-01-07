@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&family=Poppins:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&family=Poppins:wght@400;500:600&display=swap');
 body, html, p {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
@@ -18,6 +18,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.medium {
+  font-weight: 500;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -34,8 +37,17 @@ code {
 .container {
   max-width: 1140px;
   padding: 0 32px 0 32px;
+  margin: auto;
   text-align: left;
   @media screen and (max-width:767px ){
     padding: 0 24px 0 24px;
+  }
+}
+@media screen and (max-width:767px ){
+  .hide-mob {
+    display: none;
+  }
+  .card-copy {
+    margin-top: 16px;
   }
 }

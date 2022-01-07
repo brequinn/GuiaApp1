@@ -1,11 +1,11 @@
 
-import { Avatar, List, Layout, Row, Col, Space } from "antd";
+import { Avatar, List, Layout, Row, Col, Space, Button } from "antd";
+import { FileAddOutlined, SearchOutlined, EditOutlined } from "@ant-design/icons";
 import React, { useEffect, Component, useState } from "react";
 import firebase from 'firebase/compat/app';
 import { Loading } from "./Loading";
 import { GuideCard } from "./GuideCard";
 import { Header } from './Header';
-import { FileAddOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import 'firebase/firestore';
@@ -34,8 +34,12 @@ const paramsLocation = useParams<{location?: string}>();
 
     setData(result);
    
-  }
-  const daDate = dayjs(paramsTimeframe.timeframe.split(',')[0]).format("MMM DD")+ " to " +dayjs(paramsTimeframe.timeframe.split(',')[1]).format("MMM DD");
+  } 
+  const firstDate = dayjs(paramsTimeframe.timeframe.split(',')[0]).format("D MMM").toString();
+  const month = dayjs(paramsTimeframe.timeframe.split(',')[0]).format("MMM").toString();
+  const secondDate = dayjs(paramsTimeframe.timeframe.split(',')[1]).format("D MMM").toString().replace(month, "");
+  const daDate = firstDate + " to " + secondDate;
+
 
   useEffect(() => {
       getGuides();
@@ -47,16 +51,45 @@ const paramsLocation = useParams<{location?: string}>();
     <>
     <Header />
     <div
+      style={{
+        backgroundColor: "#579664",
+        minHeight: 68,
+        display: "flex",
+        alignItems: "center"
+      }}
+    >
+      <div
+      className='container'
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          padding: 0
+        }}
+      >
+        <SearchOutlined style={{ color: "#fff", fontSize: "18px", margin: "0px 5px" }}/>
+        <h1
+          style={{
+            textAlign: "center",
+            fontWeight: "normal",
+            fontSize: "18px",
+            marginBottom: 0,
+            color: "#DDEAE0",
+            margin: "0px 5px"
+          }}
+        >
+          <span className="hide-mob">Showing guides for</span><span className="medium" style={{color: "#fff"}}>{paramsLocation.location}</span> from <span className="medium" style={{color: "#fff"}}>{daDate}</span>
+        </h1>
+        <Button type="link" href="/" shape="circle" style={{margin: "0px 5px", backgroundColor: "#fff", color: "#000", borderColor: "#fff" }} icon={<EditOutlined style={{marginTop: "6px"}} />} ></Button>
+      </div>
+    </div>
+    <div
       className='container'
       style={{
-        maxWidth: 1140,
-        width: "100%",
-        margin: "auto"
+        marginTop: 32
       }}
-      > 
-    <h1>Showing guides for {paramsLocation.location} from {daDate} </h1>
-    
-    <Row gutter={16}
+      >
+    <Row gutter={[16, 24]}
       style={{
         width: "100%",
         margin: "auto"

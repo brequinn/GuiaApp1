@@ -116,11 +116,12 @@ const authInstance = getAuth(firebaseApp);
         }}
       >
         {/* <Logo /> */}
-        <Link to="/" 
-        style={{
-          width: "300px"
-        }}
+        <div
+          style={{
+            minWidth: "300px",
+          }}
         >
+        <Link to="/">
           <Space direction="horizontal" size="middle">
           <a href="/">
             <svg width="71.36" height="40" viewBox="0 0 211 80" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -129,6 +130,7 @@ const authInstance = getAuth(firebaseApp);
           </a>
           </Space>
         </Link>
+        </div>
         <Menu mode="horizontal"
           style={{
             width: "100%",
@@ -145,7 +147,10 @@ const authInstance = getAuth(firebaseApp);
         </Menu>
 
         { user34 ?
-          <div style={{ marginLeft: "auto" }}>
+          <div style={{             
+            minWidth: 300,
+            justifyContent: "end"
+          }}>
             <Space direction="horizontal" size="middle" style={{width: 300,justifyContent: "end"}}>
               <Dropdown
                 trigger={["click"]}
@@ -188,8 +193,6 @@ const authInstance = getAuth(firebaseApp);
           className="rhs"
           style={{
             borderBottom: "none",
-            width: 300,
-            justifyContent: "end"
           }}>
             <MenuItem>
               <Button
