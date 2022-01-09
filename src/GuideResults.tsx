@@ -43,7 +43,6 @@ const paramsLocation = useParams<{location?: string}>();
 
   useEffect(() => {
       getGuides();
-      console.log("THIS IS THE LOCATION DID IT WORK?"  + (JSON.stringify(paramsLocation.location)));
       moment(paramsTimeframe.timeframe).format('MMMM Do YYYY, h:mm:ss a');
   }, []);
 

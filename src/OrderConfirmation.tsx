@@ -1,4 +1,4 @@
-import { Button, Dropdown, Card, Avatar, Space, Select } from 'antd';
+import { Button, Dropdown, Card, Avatar, Space, Select, Col } from 'antd';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import "./css/Home.css";
 import firebase from 'firebase/compat/app';
@@ -7,19 +7,23 @@ import { Header } from './Header';
 import React, { useEffect, Component, useState } from "react";
 import "./css/Home.css";
 import { GuideCard } from './GuideCard';
+import moment from 'moment';
 import { Link, useParams } from "react-router-dom";
 import { RedoOutlined } from "@ant-design/icons";
+import dayjs from "dayjs";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getFirestore, collection, query, where, getDocs, doc, setDoc, addDoc} from "firebase/firestore";
 import { getDoc } from "firebase/firestore";
+var customParseFormat = require('dayjs/plugin/customParseFormat')
+dayjs.extend(customParseFormat)
+
 
 export function OrderConfirmation() {
+
   const { Meta } = Card;
   const auth = getAuth();
   const params = useParams<{guidename?: string}>();
   const [data1, setData] = useState<any>([]);
-  const [travelLocation, settravelLocation] = useState<any>([]);
-  const [travelDates, settravelDates] = useState<any>([]);
   const [guideName, setGuideName] = useState<any>([]); 
   const [GuidephotoURL, setGuidePhoto] = useState<any>([]); 
   const [guideFirstName, setGuideFirstName] = useState<any>([]); 
@@ -28,18 +32,21 @@ export function OrderConfirmation() {
   const [costPrice, setcostPrice] = useState<any>([45]);
   const [daystoBook, setdaystoBook] = useState<any>([1]);
   const { Option } = Select;
-  const paramsTimeframe = useParams<{timeframe?: string}>();
-  const paramsLocation = useParams<{location?: string}>();
+  const paramsTimeframe = useParams<{timeframe?: any}>();
+const paramsLocation = useParams<{location?: string}>();
+  
 
   var uniqid = Date.now();
+  const firstDate = dayjs(paramsTimeframe.timeframe.split(',')[0]).format("D MMM").toString();
+  const month = dayjs(paramsTimeframe.timeframe.split(',')[0]).format("MMM").toString();
+  const secondDate = dayjs(paramsTimeframe.timeframe.split(',')[1]).format("D MMM").toString().replace(month, "");
+  const daDate = firstDate + " to " + secondDate;
 
   useEffect(() => {
     auth.onAuthStateChanged(async function(user) {
       getGuideDetail();
     console.log(JSON.stringify(data1));
-    // console.log(JSON.stringify(data1));
-    // console.log("guide name is" + guideName);
-    // console.log("guide photo URL is" + GuidephotoURL);
+    moment(paramsTimeframe.timeframe).format('MMMM Do YYYY, h:mm:ss a');
   });
 }, []);
 
@@ -115,22 +122,45 @@ export function OrderConfirmation() {
 
     return (
       <>
+          
        {data1.map((guide: any) => (
            <div> 
        <Header />
-      <div> 
-            <h1   
-            
+       <Col
+        xs={24}
+        sm={24}
+        md={6}
+        lg={6}
+       
+      >
+    
+            <h1     
         className="h1">Order Confirmation
-        
         </h1>
-        <div style={{marginLeft: 500}}>
-        <img  src={guide.photoURL}/>
+      
+        <div
+                style={{
+                  background: `url(${guide.photoURL})`,
+                  paddingBottom: "64%",
+                  backgroundSize: "cover",
+                  borderRadius: "15px"
+                }}
+              >
+                <span
+                  style={{
+                    padding: "40px 12px 8px 12px",
+                    borderRadius: "200px",
+                    background: "rgba(255, 255, 255, 0.25)",
+                    display: "inline-block",
+                    color: "black",
+                  }}
+                >
+                </span>
+              </div>
        
         <h1>Book your trip with {guide.firstName}</h1>
         <h3>Details</h3>
-        <Button onClick={more}>hi</Button>
-        <p>Trip to {paramsLocation.location} from {paramsTimeframe.timeframe}</p>
+        <p>Trip to {paramsLocation.location} from {daDate}</p>
         <p>${guide.guideDailyCost} per day
     </p>
 
@@ -166,10 +196,9 @@ export function OrderConfirmation() {
    
   </Select>
   </Space>
-
-        </div>
-
-        <Card title="Price summary" style={{ width: 300, marginLeft: 1200, marginTop: -570 }}>
+  <div style={{marginTop: 20}}>
+  <h3>Price summary</h3>
+        <Card >
       <p>Days to plan: {daystoBook} days</p>
       <p>Total: ${costPrice}</p>
       <p>Estimated delivery time: 3 days</p>
@@ -193,11 +222,14 @@ export function OrderConfirmation() {
           </Button>
           </Link>
     </Card>
-
-     
+    </div>
+ 
+  
+    </Col> 
       </div>
-      </div>
+    
        ))} 
+      
       </>
     );
   }

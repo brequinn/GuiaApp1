@@ -88,9 +88,16 @@ export function GuideDetail() {
            <p>I specialize in the following activities : {guide.guideActivities} </p>
            <p>2 iterations on your itinerary</p>
            <div>
+           
+           <Col
+       xs={24}
+       sm={24}
+       md={6}
+       lg={6}
+          >
            <Card size="small" title="Booking price" style={{ width: 400 }}>
       <p>${guide.guideDailyCost} per day</p>
-      <p>{guide.deliveryTimeFrame} Days Delivery</p>
+      <p>Delivery timeframe: {guide.deliveryTimeFrame} days </p>
       <RedoOutlined />
       <p>2 revisions</p>
     
@@ -100,6 +107,8 @@ export function GuideDetail() {
            </Button>
            </Link>
     </Card>
+    </Col>
+
            </div>
            </Col> 
       </div>
