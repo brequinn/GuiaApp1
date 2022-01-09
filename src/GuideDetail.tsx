@@ -1,4 +1,4 @@
-import { Button, Dropdown, Card } from 'antd';
+import { Button, Dropdown, Card, Col } from 'antd';
 import React, { useEffect, Component, useState } from "react";
 import "./css/Home.css";
 import firebase from 'firebase/compat/app';
@@ -9,6 +9,13 @@ import { doc, getDoc } from "firebase/firestore";
 import { RedoOutlined } from "@ant-design/icons";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getFirestore, collection, query, where, getDocs} from "firebase/firestore";
+import cocktailIcon from'./images/cocktail.svg';
+import museumIcon from'./images/museums.svg';
+import jazzIcon from'./images/jazz.svg';
+import beerIcon from'./images/beer.svg';
+import clubIcon from'./images/club.svg';
+import hikeIcon from'./images/hike.svg';
+import guideIcon from'./images/guide.svg';
 
 
 export function GuideDetail() {
@@ -42,8 +49,31 @@ export function GuideDetail() {
        {data1.map((guide: any) => (
              <div>  
        <Header />
-      
-      <img style={{width: "100%" }} src={guide.photoURL}/>
+       <Col
+              xs={24}
+              sm={24}
+              md={6}
+              lg={6}
+            >
+       <div
+                style={{
+                  background: `url(${guide.photoURL})`,
+                  paddingBottom: "64%",
+                  backgroundSize: "cover",
+                  borderRadius: "15px"
+                }}
+              >
+                <span
+                  style={{
+                    padding: "40px 12px 8px 12px",
+                    borderRadius: "200px",
+                    background: "rgba(255, 255, 255, 0.25)",
+                    display: "inline-block",
+                    color: "black",
+                  }}
+                >
+                </span>
+              </div>
       <div className='container'>
             <h1   
             
@@ -71,9 +101,10 @@ export function GuideDetail() {
            </Link>
     </Card>
            </div>
-         
+           </Col> 
       </div>
          ))} 
+    
       </>
         
     );
