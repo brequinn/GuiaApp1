@@ -164,6 +164,7 @@ export function GuideDetail() {
             </div>
           </div>
          ))} 
+    
       </>
         
     );
