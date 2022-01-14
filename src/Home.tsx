@@ -47,6 +47,8 @@ const [userProfile, setuserProfile] = useState<any>([]);
   });
   }
 
+  const OPTIONS = ['New York City', 'Mexico City'];
+
 
   function checkData() {
    if (tripLocation == 1 || tripTimeline == 2) {

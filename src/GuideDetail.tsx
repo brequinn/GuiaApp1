@@ -79,9 +79,9 @@ export function GuideDetail() {
                   }}
                 >
                     {/* PLACEHOLDER AVATAR IMAGE */}
-                    <div 
+                    <img 
+                      src={guide.photoURL}
                       style={{
-                        
                         justifyContent: "center",
                         border: "solid 4px #fff",
                         backgroundColor: "#569764",
@@ -92,11 +92,9 @@ export function GuideDetail() {
                         fontSize: "54px",
                         display: "inline-flex",
                         alignItems: "center",
-                        color: "#fff",
-
-                      }}>
-                      {guide.guideName.charAt(0)}
-                    </div>
+                        color: "#fff"
+                      }}/>
+               
                     {/* END PLACEHOLDER */}
                     <Button href={`/${guide.IDtag}/${paramsLocation.location}/${paramsTimeframe.timeframe}/confirmation`} className="buttonShadow" shape="round" size="large">Book trip with {guide.guideName.split(" ")[0]}</Button>
                     {/* <Button className="buttonShadow" shape="circle" size="large"><HeartOutlined /></Button> */}
@@ -121,7 +119,7 @@ export function GuideDetail() {
                       style={{ fontSize: "12px", fontWeight: "normal" }}
                       className="specialities"
                       >
-                      <div dangerouslySetInnerHTML={{ __html: guide.groupSpecialities.replace(/Solo/gi, '<span>Solo</span>').replace(/Couples/gi, '<span>Couples</span>').replace(/travelers/gi, '<span>Travelers</span>').replace(',','') }} />
+                      <div dangerouslySetInnerHTML={{ __html: guide.groupSpecialities.replace(/Solo travelers/gi, '<span>Solo travelers</span>').replace(/Couples/gi, '<span>Couples</span>').replace(/families/gi, '<span>Families</span>').replace(',','') }} />
                     </p>
                     <p>I specialize in these activities:</p>
                 
@@ -147,7 +145,7 @@ export function GuideDetail() {
                         width: 400,
                         borderRadius: "10px"
                         }}>
-                      <p>Delivery timeframe: {guide.deliveryTimeFrame} per day</p>
+                      <p>Delivery timeframe: {guide.deliveryTimeFrame} days</p>
                       <RedoOutlined />
                       <p>2 revisions</p>
                       <Link to={`/${guide.IDtag}/${paramsLocation.location}/${paramsTimeframe.timeframe}/confirmation`}>
