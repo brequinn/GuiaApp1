@@ -121,11 +121,59 @@ const paramsLocation = useParams<{location?: string}>();
 
 
     return (
-      <>
-          
+      <> 
        {data1.map((guide: any) => (
            <div> 
        <Header />
+       <div className=""
+              style={{
+                maxHeight: 200,
+                overflow: "hidden",
+                display: "flex",
+                alignItems: "center"
+              }}
+            >
+              <img style={{width: "100%" }} src={guide.photoURL}/>
+            </div>
+            <div
+              className="pageContent"
+              style={{
+                backgroundColor: "#fff",
+                position: "relative",
+                borderRadius: "20px",
+                width: "100vw"
+              }}
+            >
+              <div 
+                className='container'
+              >
+                <div
+                  style={{
+                    marginTop: "-84px",
+                    position: "absolute"
+                  }}
+                >
+                    {/* PLACEHOLDER AVATAR IMAGE */}
+                    <div 
+                      style={{
+                        
+                        justifyContent: "center",
+                        border: "solid 4px #fff",
+                        backgroundColor: "#569764",
+                        borderRadius: "200px",
+                        marginRight: "10px",
+                        width: "132px",
+                        height: "132px",
+                        fontSize: "54px",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        color: "#fff",
+
+                      }}>
+                      {guide.guideName.charAt(0)}
+                    </div>
+                    {/* END PLACEHOLDER */}
+                </div>
        <Col
         xs={24}
         sm={24}
@@ -136,28 +184,7 @@ const paramsLocation = useParams<{location?: string}>();
     
             <h1     
         className="h1">Order Confirmation
-        </h1>
-      
-        <div
-                style={{
-                  background: `url(${guide.photoURL})`,
-                  paddingBottom: "64%",
-                  backgroundSize: "cover",
-                  borderRadius: "15px"
-                }}
-              >
-                <span
-                  style={{
-                    padding: "40px 12px 8px 12px",
-                    borderRadius: "200px",
-                    background: "rgba(255, 255, 255, 0.25)",
-                    display: "inline-block",
-                    color: "black",
-                  }}
-                >
-                </span>
-              </div>
-       
+        </h1> 
         <h1>Book your trip with {guide.firstName}</h1>
         <h3>Details</h3>
         <p>Trip to {paramsLocation.location} from {daDate}</p>
@@ -226,8 +253,10 @@ const paramsLocation = useParams<{location?: string}>();
  
   
     </Col> 
-      </div>
-    
+    </div>
+            </div>
+          </div>
+   
        ))} 
       
       </>

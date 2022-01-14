@@ -98,8 +98,8 @@ export function GuideDetail() {
                       {guide.guideName.charAt(0)}
                     </div>
                     {/* END PLACEHOLDER */}
-                    <Button href={`/${guide.IDtag}/${paramsLocation.location}/${paramsTimeframe.timeframe}/confirmation`} className="buttonShadow" shape="round" size="large">Book {guide.guideName.split(" ")[0]}</Button>
-                    <Button className="buttonShadow" shape="circle" size="large"><HeartOutlined /></Button>
+                    <Button href={`/${guide.IDtag}/${paramsLocation.location}/${paramsTimeframe.timeframe}/confirmation`} className="buttonShadow" shape="round" size="large">Book trip with {guide.guideName.split(" ")[0]}</Button>
+                    {/* <Button className="buttonShadow" shape="circle" size="large"><HeartOutlined /></Button> */}
                 </div>
                 <Row
                   style={{
@@ -124,17 +124,15 @@ export function GuideDetail() {
                       <div dangerouslySetInnerHTML={{ __html: guide.groupSpecialities.replace(/Solo/gi, '<span>Solo</span>').replace(/Couples/gi, '<span>Couples</span>').replace(/travelers/gi, '<span>Travelers</span>').replace(',','') }} />
                     </p>
                     <p>I specialize in these activities:</p>
-                    <div
-                        className="guide-features"
-                        style={{
-                          marginLeft: "16px",
-                          alignItems: "center"
-                        }}
+                
+
+                    <p 
+                      style={{ fontSize: "12px", fontWeight: "normal" }}
+                      className="specialities1"
                       >
-                      <p>
-                        <div dangerouslySetInnerHTML={{ __html: guide.guideActivities.replace(/bars/gi, '<img src="'+ cocktailIcon +'" />').replace(/museums/gi, '<img src="'+ museumIcon +'" />').replace(/Jazz/gi, '<img src="'+ jazzIcon +'" />').replace(/breweries/gi, '<img src="'+ beerIcon +'" />').replace(/clubs/gi, '<img src="'+ clubIcon +'" />').replace(/off the beaten path/gi, '<img src="'+ hikeIcon +'" />').replace(/tours/gi, '<img src="'+ guideIcon +'" />').replace(/And more!/gi, '<span class="showmore">+ And more</span>').replace(", ","") }} />
-                      </p>
-                    </div>
+                      <div dangerouslySetInnerHTML={{ __html: guide.guideActivities.replace(/Jazz clubs/gi, '<span>Jazz clubs</span>').replace(/Off the beaten path/gi, '<span>Off the beaten path</span>').replace(/museums/gi, '<span>Museums</span>').replace(/bars/gi, '<span>Bars</span>').replace(/breweries/gi, '<span>Breweries</span>').replace(/tours/gi, '<span>Tours</span>').replace(/hiking/gi, '<span>Hiking</span>').replace(',','') }} />
+                    </p>
+
                   </Col>
                   <Col
                     xs={{ span: 24 }}
@@ -144,12 +142,12 @@ export function GuideDetail() {
                   >
                     <Card 
                       size="small" 
-                      title={"Prices from "+"$"+ guide.guideDailyCost}
+                      title={"Daily price: "+"$"+ guide.guideDailyCost}
                       style={{
                         width: 400,
                         borderRadius: "10px"
                         }}>
-                      <p>{guide.deliveryTimeFrame} Days Delivery</p>
+                      <p>Delivery timeframe: {guide.deliveryTimeFrame} per day</p>
                       <RedoOutlined />
                       <p>2 revisions</p>
                       <Link to={`/${guide.IDtag}/${paramsLocation.location}/${paramsTimeframe.timeframe}/confirmation`}>
