@@ -167,7 +167,7 @@ const [userProfile, setuserProfile] = useState<any>([]);
             size="large"
           >
             <Option value="New York City">New York City</Option>
-            <Option value="Mexico City">Mexico City</Option>
+            {/* <Option value="Mexico City">Mexico City</Option> */}
           
           </Select>
         </Col>

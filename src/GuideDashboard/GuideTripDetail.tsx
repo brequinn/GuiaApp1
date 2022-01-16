@@ -68,7 +68,7 @@ const params = useParams<{tripid?: string}>();
       
     <div style={{marginTop: 50}}>
     <h1>Trip itinerary</h1>
-    <h5>Please create you itinerary in google docs then paste the share link here</h5>
+    <h5>Please create your itinerary in google docs then paste the share link here</h5>
     <h5>Please note: Every time you update this link, {guide.travelerName}, will receive a notification </h5>
     <Search
     style={{
