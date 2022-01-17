@@ -140,18 +140,18 @@ export function GuideDetail() {
                   >
                     <Card 
                       size="small" 
-                      title={"Daily price: "+"$"+ guide.guideDailyCost}
+                      title="Booking details"
                       style={{
                         width: 400,
-                        borderRadius: "10px"
+                        borderRadius: "10px",
+                        marginTop: 20
                         }}>
+                      <p>Price: ${guide.guideDailyCost} per day</p>
                       <p>Delivery timeframe: {guide.deliveryTimeFrame} days</p>
-                      <RedoOutlined />
+                      <div>
                       <p>2 revisions</p>
+                      </div>
                       <Link to={`/${guide.IDtag}/${paramsLocation.location}/${paramsTimeframe.timeframe}/confirmation`}>
-                        <Button>
-                          Book your trip with {guide.firstName} for {paramsLocation.location}
-                        </Button>
                       </Link>
                     </Card>
                   </Col>

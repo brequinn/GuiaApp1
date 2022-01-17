@@ -142,7 +142,7 @@ import { UserOutlined } from "@ant-design/icons";
                 style={{ fontSize: "12px", fontWeight: "normal" }}
                 className="specialities"
               >
-                <div dangerouslySetInnerHTML={{ __html: specialities.replace(/Solo/gi, '<span>Solo</span>').replace(/Couples/gi, '<span>Couples</span>').replace(/travelers/gi, '<span>Travelers</span>').replace(',','') }} />
+                 <div dangerouslySetInnerHTML={{ __html: guide.groupSpecialities.replace(/Solo travelers/gi, '<span>Solo travelers</span>').replace(/Couples/gi, '<span>Couples</span>').replace(/families/gi, '<span>Families</span>').replace(',','') }} />
               </p>
             <h4
               style={{
@@ -154,9 +154,12 @@ import { UserOutlined } from "@ant-design/icons";
             >
               Activity expert in:
             </h4>
-            <p>
-              <div dangerouslySetInnerHTML={{ __html: guide.guideActivities.replace(/bars/gi, '<img src="'+ cocktailIcon +'" />').replace(/museums/gi, '<img src="'+ museumIcon +'" />').replace(/Jazz/gi, '<img src="'+ jazzIcon +'" />').replace(/breweries/gi, '<img src="'+ beerIcon +'" />').replace(/clubs/gi, '<img src="'+ clubIcon +'" />').replace(/off the beaten path/gi, '<img src="'+ hikeIcon +'" />').replace(/tours/gi, '<img src="'+ guideIcon +'" />').replace(/And more!/gi, '<span class="showmore">+ And more</span>').replace(", ","") }} />
-            </p>
+            <p 
+                      style={{ fontSize: "12px", fontWeight: "normal" }}
+                      className="specialities1"
+                      >
+                      <div dangerouslySetInnerHTML={{ __html: guide.guideActivities.replace(/Jazz clubs/gi, '<span>Jazz clubs</span>').replace(/Off the beaten path/gi, '<span>Off the beaten path</span>').replace(/museums/gi, '<span>Museums</span>').replace(/bars/gi, '<span>Bars</span>').replace(/breweries/gi, '<span>Breweries</span>').replace(/tours/gi, '<span>Tours</span>').replace(/hiking/gi, '<span>Hiking</span>').replace(',','') }} />
+                    </p>
           </Col>
           </Row>
         </Link>

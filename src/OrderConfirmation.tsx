@@ -85,7 +85,7 @@ const paramsLocation = useParams<{location?: string}>();
         travelerPhoto: user1.photoURL,
         guideID: params .guidename,
         guidePhoto: guide.photoURL,
-        TripItineraryLink: "https://tripadvisor.com",
+        TripItineraryLink: "https://docs.google.com/document/d/1Eks1ofLeaj7kNcKKj9doo6NaCgmvOOo0Bbi3Bkr1ciM/edit?usp=sharing",
         tripLocation: (paramsLocation.location),
         tripTimeframe: (paramsTimeframe.timeframe),
         tripDayLength: (daystoBook),

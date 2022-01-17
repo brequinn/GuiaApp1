@@ -224,7 +224,7 @@ const [userProfile, setuserProfile] = useState<any>([]);
           <Panel
             header="What is Guia?" key="1"
           >
-            <p>Sartorial truffaut schlitz, glossier umami affogato four dollar toast fingerstache cred. Four loko banh mi put a bird on it meggings blue bottle austin viral blog messenger bag affogato humblebrag. Copper mug cliche pork belly chambray, vaporware subway tile locavore artisan. Raw denim put a bird on it retro skateboard aesthetic. Food truck actually ramps, church-key cray +1 leggings chambray.</p>
+            <p>Guia is a marketplace connecting travelers with travel creators around the world. Guides provide you with a personalized itinerary to help you enjoy the most out of your trip</p>
           </Panel>
           <Panel header="What to I make a booking?" key="2">
             <p>Vaporware pabst portland literally, listicle ramps iPhone la croix 3 wolf moon gochujang whatever. Organic gentrify plaid, cold-pressed literally pabst bushwick trust fund hell of. Meh copper mug leggings health goth kombucha.</p>
