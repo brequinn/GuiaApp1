@@ -42,69 +42,51 @@ const params = useParams<{tripid?: string}>();
   }, []);
 
   return (  
-    <> 
-    <Header />
-    {data1.map((guide: any) => (
-   <div style={{marginLeft: 50}}>
-   <h1>Trip Overview</h1>
-   <h3>Trip Location</h3>
-   <h5>{guide.tripLocation}</h5>
-   <h3>Timeframe</h3>
-   <h5>{guide.tripTimeframe}</h5>
-   <h3> Your host</h3>
-    <h5>{guide.guideFirstName}</h5>  
-    <h3> Total trip cost</h3>
-    <h5>${guide.tripCost}</h5>
-    
-
-   
-
     <div>
-  
-      <Layout style={{backgroundColor: 'white'}}>
-      
-    <div style={{marginTop: 50}}>
-    <h1>Trip itinerary</h1>
-    <ItineraryCard  guide={guide} key={guide} />
-    </div>
-
-        <Row
-          gutter={[0, 0]}
+        <Header />
+        {data1.map((guide: any) => (
+      <div className='container' >
+      <Row>
+      <Col
+        xs={24}
+        sm={24}
+        md={21}
+        lg={12}
+        style={{}}
+      >
+        <h1>Trip Overview</h1>
+        <h3>Trip Location</h3>
+        <h5>{guide.tripLocation}</h5>
+        <h3>Timeframe</h3>
+        <h5>{guide.tripTimeframe}</h5>
+        <h3> Your host</h3>
+        <h5>{guide.guideFirstName}</h5>  
+        <h3> Total trip cost</h3>
+        <h5>${guide.tripCost}</h5>
+         
+        <h1>Trip itinerary</h1>
+        <ItineraryCard  guide={guide} key={guide} />
+        </Col>
+        <Col
+          xs={24}
+          sm={24}
+          md={21}
+          lg={12}
           style={{
-            height: "calc(100vh - 72px - 56px)",
-          }}
+            backgroundColor: "grey",
+            height: "100vh",
+            width: '700px',
+            display: "inline-block",
+            overflow: "scroll",
+          }}              
         >
-      
-          <Col
-            xs={24}
-            sm={24}
-            md={10}
-            lg={10}
-            style={{
-              backgroundColor: "grey",
-              position: 'fixed',
-              height: "100vh",
-              width: '700px',
-              display: "inline-block",
-              marginLeft: 1030,
-              marginTop: -685,
-              overflow: "scroll",
-            }}
-            className="container"
-          
-          >
-            <ChatOverview />
-          </Col>
+          <ChatOverview />
           <ChannelBar />
-        </Row>
-      </Layout>
-    </div>     
-        </div>
-
-        
-    ))} 
- 
-    </>
+        </Col>
+      </Row>
+    </div>
+    ))}
+    </div>
   
   );
 }
