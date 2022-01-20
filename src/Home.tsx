@@ -227,7 +227,7 @@ const [userProfile, setuserProfile] = useState<any>([]);
           <Panel header="What to I make a booking?" key="2">
             <p>Vaporware pabst portland literally, listicle ramps iPhone la croix 3 wolf moon gochujang whatever. Organic gentrify plaid, cold-pressed literally pabst bushwick trust fund hell of. Meh copper mug leggings health goth kombucha.</p>
           </Panel>
-          <Panel header="How can I become a host?" key="3">
+          <Panel header="How can I become a guide?" key="3">
             <p>hambray mixtape godard wayfarers fingerstache. Austin kombucha gentrify, craft beer health goth vaporware food truck mixtape hot chicken 90's coloring book try-hard la croix subway tile skateboard. Listicle gluten-free letterpress tousled</p>
           </Panel>
           <Panel header="I want to joing to BETA, how do I do that?" key="3">

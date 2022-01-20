@@ -38,8 +38,7 @@ import { UserOutlined } from "@ant-design/icons";
         sm={24}
         md={24}
         lg={24}
-        style={{
-        }}
+       
       >
         <Link to={`/guide/${guide.IDtag}/${paramsLocation.location}/${paramsTimeframe.timeframe}`}>
           <Row gutter={24} align="middle" style={{ paddingBottom: "24px", borderBottom: "solid 1px #F2F2F2" }}>
