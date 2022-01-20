@@ -1,4 +1,4 @@
-import { Button, Dropdown, Card, Avatar, Space, Select, Col } from 'antd';
+import { Button, Dropdown, Card, Avatar, Space, Select, Col, Row } from 'antd';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import "./css/Home.css";
 import firebase from 'firebase/compat/app';
@@ -154,9 +154,9 @@ const paramsLocation = useParams<{location?: string}>();
                   }}
                 >
                     {/* PLACEHOLDER AVATAR IMAGE */}
-                    <div 
+                    <img 
+                      src={guide.photoURL}
                       style={{
-                        
                         justifyContent: "center",
                         border: "solid 4px #fff",
                         backgroundColor: "#569764",
@@ -167,35 +167,36 @@ const paramsLocation = useParams<{location?: string}>();
                         fontSize: "54px",
                         display: "inline-flex",
                         alignItems: "center",
-                        color: "#fff",
-
-                      }}>
-                      {guide.guideName.charAt(0)}
-                    </div>
+                        color: "#fff"
+                      }}/>
                     {/* END PLACEHOLDER */}
-                </div>
-       <Col
-        xs={24}
-        sm={24}
-        md={6}
-        lg={6}
-       
-      >
-    
+                </div> 
+                <Row
+                  style={{
+                    paddingTop: "64px"
+                  }}
+                >
+    <Col
+                    xs={{ span: 24 }}
+                    sm={{ span: 24 }}
+                    md={{ span: 15}}
+                    lg={{ span: 15 }}
+                  > 
             <h1     
         className="h1">Order Confirmation
         </h1> 
-        <h1>Book your trip with {guide.firstName}</h1>
-        <h3>Details</h3>
+        {/* <h1>Book your trip with {guide.firstName}</h1> */}
+        <h3>Trip summary</h3>
         <p>Trip to {paramsLocation.location} from {daDate}</p>
         <p>${guide.guideDailyCost} per day
     </p>
 
     <p>3 days delivery
     </p>
-    <RedoOutlined />
+   
     <p>2 revisions
     </p>
+        <div style={{marginTop: 30}}>
         <h3>Days to book</h3>
         <Space style={{marginLeft: 0}} direction="vertical" >
     <Select
@@ -223,12 +224,20 @@ const paramsLocation = useParams<{location?: string}>();
    
   </Select>
   </Space>
-  <div style={{marginTop: 20}}>
+  </div>
+  </Col>
+  <Col
+                    xs={{ span: 24 }}
+                    sm={{ span: 24 }}
+                    md={{ span: 8, offset: 1 }}
+                    lg={{ span: 8, offset: 1 }}
+                  >
+  <div style={{marginTop: 55}}>
   <h3>Price summary</h3>
         <Card >
       <p>Days to plan: {daystoBook} days</p>
-      <p>Total: ${costPrice}</p>
-      <p>Estimated delivery time: 3 days</p>
+      <p>Total booking price: ${costPrice}</p>
+      <p>Total marketplace fee (15%):</p>
      
      
       <Link to="/MyTrips">
@@ -250,9 +259,9 @@ const paramsLocation = useParams<{location?: string}>();
           </Link>
     </Card>
     </div>
- 
-  
+
     </Col> 
+    </Row>
     </div>
             </div>
           </div>
