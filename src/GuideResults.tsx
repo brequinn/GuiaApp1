@@ -35,9 +35,9 @@ const paramsLocation = useParams<{location?: string}>();
     setData(result);
    
   } 
-  const firstDate = dayjs(paramsTimeframe.timeframe.split(',')[0]).format("D MMM").toString();
+  const firstDate = dayjs(paramsTimeframe.timeframe.split(',')[0]).format("MMM D").toString();
   const month = dayjs(paramsTimeframe.timeframe.split(',')[0]).format("MMM").toString();
-  const secondDate = dayjs(paramsTimeframe.timeframe.split(',')[1]).format("D MMM").toString().replace(month, "");
+  const secondDate = dayjs(paramsTimeframe.timeframe.split(',')[1]).format("MMM D").toString().replace(month, "");
   const daDate = firstDate + " to " + secondDate;
 
 
