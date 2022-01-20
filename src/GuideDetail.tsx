@@ -98,7 +98,7 @@ export function GuideDetail() {
                       {guide.guideName.charAt(0)}
                     </div>
                     {/* END PLACEHOLDER */}
-                    <Button href={`/${guide.IDtag}/${paramsLocation.location}/${paramsTimeframe.timeframe}/confirmation`} className="buttonShadow" shape="round" size="large">Book {guide.guideName.split(" ")[0]}</Button>
+                    <Button style={{ marginRight: "8px" }} href={`/${guide.IDtag}/${paramsLocation.location}/${paramsTimeframe.timeframe}/confirmation`} className="buttonShadow" shape="round" size="large">Book {guide.guideName.split(" ")[0]}</Button>
                     <Button className="buttonShadow" shape="circle" size="large"><HeartOutlined /></Button>
                 </div>
                 <Row
@@ -113,6 +113,9 @@ export function GuideDetail() {
                     lg={{ span: 15 }}
                   >                 
                     <h1   
+                      style={{
+                        fontSize: "24px"
+                      }}
                       >{guide.guideName}
                     </h1>
                     <p>{guide.guideDescription}</p>
@@ -147,7 +150,8 @@ export function GuideDetail() {
                       title={"Prices from "+"$"+ guide.guideDailyCost}
                       style={{
                         width: 400,
-                        borderRadius: "10px"
+                        borderRadius: "10px",
+                        boxShadow: "0px 18px 40px rgba(0, 0, 0, 0.07), 0px 11.6667px 23.4259px rgba(0, 0, 0, 0.0531481), 0px 6.93333px 12.7407px rgba(0, 0, 0, 0.0425185), 0px 3.6px 6.5px rgba(0, 0, 0, 0.035), 0px 1.46667px 3.25926px rgba(0, 0, 0, 0.0274815), 0px 0.333333px 1.57407px rgba(0, 0, 0, 0.0168519)"
                         }}>
                       <p>{guide.deliveryTimeFrame} Days Delivery</p>
                       <RedoOutlined />
