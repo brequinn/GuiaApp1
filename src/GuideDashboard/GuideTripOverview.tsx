@@ -66,13 +66,6 @@ useEffect(() => {
         </p>
      
       </div>
-      <Button style={{
-        width: '300px',
-        height: '100px',
-        marginLeft: 200
-      }}>
-        Earnings
-      </Button>
       </>
     );
   }

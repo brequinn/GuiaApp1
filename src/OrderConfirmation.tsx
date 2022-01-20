@@ -1,4 +1,4 @@
-import { Button, Dropdown, Card, Avatar, Space, Select, Col } from 'antd';
+import { Button, Dropdown, Card, Avatar, Space, Select, Col, Row } from 'antd';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import "./css/Home.css";
 import firebase from 'firebase/compat/app';
@@ -85,7 +85,7 @@ const paramsLocation = useParams<{location?: string}>();
         travelerPhoto: user1.photoURL,
         guideID: params .guidename,
         guidePhoto: guide.photoURL,
-        TripItineraryLink: "https://tripadvisor.com",
+        TripItineraryLink: "https://docs.google.com/document/d/1Eks1ofLeaj7kNcKKj9doo6NaCgmvOOo0Bbi3Bkr1ciM/edit?usp=sharing",
         tripLocation: (paramsLocation.location),
         tripTimeframe: (paramsTimeframe.timeframe),
         tripDayLength: (daystoBook),
@@ -121,54 +121,82 @@ const paramsLocation = useParams<{location?: string}>();
 
 
     return (
-      <>
-          
+      <> 
        {data1.map((guide: any) => (
            <div> 
        <Header />
-       <Col
-        xs={24}
-        sm={24}
-        md={6}
-        lg={6}
-       
-      >
-    
-            <h1     
-        className="h1">Order Confirmation
-        </h1>
-      
-        <div
-                style={{
-                  background: `url(${guide.photoURL})`,
-                  paddingBottom: "64%",
-                  backgroundSize: "cover",
-                  borderRadius: "15px"
-                }}
+       <div className=""
+              style={{
+                maxHeight: 200,
+                overflow: "hidden",
+                display: "flex",
+                alignItems: "center"
+              }}
+            >
+              <img style={{width: "100%" }} src={guide.photoURL}/>
+            </div>
+            <div
+              className="pageContent"
+              style={{
+                backgroundColor: "#fff",
+                position: "relative",
+                borderRadius: "20px",
+                width: "100vw"
+              }}
+            >
+              <div 
+                className='container'
               >
-                <span
+                <div
                   style={{
-                    padding: "40px 12px 8px 12px",
-                    borderRadius: "200px",
-                    background: "rgba(255, 255, 255, 0.25)",
-                    display: "inline-block",
-                    color: "black",
+                    marginTop: "-84px",
+                    position: "absolute"
                   }}
                 >
-                </span>
-              </div>
-       
-        <h1>Book your trip with {guide.firstName}</h1>
-        <h3>Details</h3>
+                    {/* PLACEHOLDER AVATAR IMAGE */}
+                    <img 
+                      src={guide.photoURL}
+                      style={{
+                        justifyContent: "center",
+                        border: "solid 4px #fff",
+                        backgroundColor: "#569764",
+                        borderRadius: "200px",
+                        marginRight: "10px",
+                        width: "132px",
+                        height: "132px",
+                        fontSize: "54px",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        color: "#fff"
+                      }}/>
+                    {/* END PLACEHOLDER */}
+                </div> 
+                <Row
+                  style={{
+                    paddingTop: "64px"
+                  }}
+                >
+    <Col
+                    xs={{ span: 24 }}
+                    sm={{ span: 24 }}
+                    md={{ span: 15}}
+                    lg={{ span: 15 }}
+                  > 
+            <h1     
+        className="h1">Order Confirmation
+        </h1> 
+        {/* <h1>Book your trip with {guide.firstName}</h1> */}
+        <h3>Trip summary</h3>
         <p>Trip to {paramsLocation.location} from {daDate}</p>
         <p>${guide.guideDailyCost} per day
     </p>
 
     <p>3 days delivery
     </p>
-    <RedoOutlined />
+   
     <p>2 revisions
     </p>
+        <div style={{marginTop: 30}}>
         <h3>Days to book</h3>
         <Space style={{marginLeft: 0}} direction="vertical" >
     <Select
@@ -196,12 +224,20 @@ const paramsLocation = useParams<{location?: string}>();
    
   </Select>
   </Space>
-  <div style={{marginTop: 20}}>
+  </div>
+  </Col>
+  <Col
+                    xs={{ span: 24 }}
+                    sm={{ span: 24 }}
+                    md={{ span: 8, offset: 1 }}
+                    lg={{ span: 8, offset: 1 }}
+                  >
+  <div style={{marginTop: 55}}>
   <h3>Price summary</h3>
         <Card >
       <p>Days to plan: {daystoBook} days</p>
-      <p>Total: ${costPrice}</p>
-      <p>Estimated delivery time: 3 days</p>
+      <p>Total booking price: ${costPrice}</p>
+      <p>Total marketplace fee (15%):</p>
      
      
       <Link to="/MyTrips">
@@ -223,11 +259,13 @@ const paramsLocation = useParams<{location?: string}>();
           </Link>
     </Card>
     </div>
- 
-  
+
     </Col> 
-      </div>
-    
+    </Row>
+    </div>
+            </div>
+          </div>
+   
        ))} 
       
       </>

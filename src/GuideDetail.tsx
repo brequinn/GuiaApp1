@@ -79,9 +79,9 @@ export function GuideDetail() {
                   }}
                 >
                     {/* PLACEHOLDER AVATAR IMAGE */}
-                    <div 
+                    <img 
+                      src={guide.photoURL}
                       style={{
-                        
                         justifyContent: "center",
                         border: "solid 4px #fff",
                         backgroundColor: "#569764",
@@ -92,14 +92,12 @@ export function GuideDetail() {
                         fontSize: "54px",
                         display: "inline-flex",
                         alignItems: "center",
-                        color: "#fff",
-
-                      }}>
-                      {guide.guideName.charAt(0)}
-                    </div>
+                        color: "#fff"
+                      }}/>
+               
                     {/* END PLACEHOLDER */}
-                    <Button style={{ marginRight: "8px" }} href={`/${guide.IDtag}/${paramsLocation.location}/${paramsTimeframe.timeframe}/confirmation`} className="buttonShadow" shape="round" size="large">Book {guide.guideName.split(" ")[0]}</Button>
-                    <Button className="buttonShadow" shape="circle" size="large"><HeartOutlined /></Button>
+                    <Button href={`/${guide.IDtag}/${paramsLocation.location}/${paramsTimeframe.timeframe}/confirmation`} className="buttonShadow" shape="round" size="large">Book trip with {guide.guideName.split(" ")[0]}</Button>
+                    {/* <Button className="buttonShadow" shape="circle" size="large"><HeartOutlined /></Button> */}
                 </div>
                 <Row
                   style={{
@@ -124,20 +122,18 @@ export function GuideDetail() {
                       style={{ fontSize: "12px", fontWeight: "normal" }}
                       className="specialities"
                       >
-                      <div dangerouslySetInnerHTML={{ __html: guide.groupSpecialities.replace(/Solo/gi, '<span>Solo</span>').replace(/Couples/gi, '<span>Couples</span>').replace(/travelers/gi, '<span>Travelers</span>').replace(',','') }} />
+                      <div dangerouslySetInnerHTML={{ __html: guide.groupSpecialities.replace(/Solo travelers/gi, '<span>Solo travelers</span>').replace(/Couples/gi, '<span>Couples</span>').replace(/families/gi, '<span>Families</span>').replace(',','') }} />
                     </p>
                     <p>I specialize in these activities:</p>
-                    <div
-                        className="guide-features"
-                        style={{
-                          marginLeft: "16px",
-                          alignItems: "center"
-                        }}
+                
+
+                    <p 
+                      style={{ fontSize: "12px", fontWeight: "normal" }}
+                      className="specialities1"
                       >
-                      <p>
-                        <div dangerouslySetInnerHTML={{ __html: guide.guideActivities.replace(/bars/gi, '<img src="'+ cocktailIcon +'" />').replace(/museums/gi, '<img src="'+ museumIcon +'" />').replace(/Jazz/gi, '<img src="'+ jazzIcon +'" />').replace(/breweries/gi, '<img src="'+ beerIcon +'" />').replace(/clubs/gi, '<img src="'+ clubIcon +'" />').replace(/off the beaten path/gi, '<img src="'+ hikeIcon +'" />').replace(/tours/gi, '<img src="'+ guideIcon +'" />').replace(/And more!/gi, '<span class="showmore">+ And more</span>').replace(", ","") }} />
-                      </p>
-                    </div>
+                      <div dangerouslySetInnerHTML={{ __html: guide.guideActivities.replace(/Jazz clubs/gi, '<span>Jazz clubs</span>').replace(/Off the beaten path/gi, '<span>Off the beaten path</span>').replace(/museums/gi, '<span>Museums</span>').replace(/bars/gi, '<span>Bars</span>').replace(/breweries/gi, '<span>Breweries</span>').replace(/tours/gi, '<span>Tours</span>').replace(/hiking/gi, '<span>Hiking</span>').replace(',','') }} />
+                    </p>
+
                   </Col>
                   <Col
                     xs={{ span: 24 }}
@@ -147,19 +143,19 @@ export function GuideDetail() {
                   >
                     <Card 
                       size="small" 
-                      title={"Prices from "+"$"+ guide.guideDailyCost}
+                      title="Booking details"
                       style={{
                         width: 400,
                         borderRadius: "10px",
                         boxShadow: "0px 18px 40px rgba(0, 0, 0, 0.07), 0px 11.6667px 23.4259px rgba(0, 0, 0, 0.0531481), 0px 6.93333px 12.7407px rgba(0, 0, 0, 0.0425185), 0px 3.6px 6.5px rgba(0, 0, 0, 0.035), 0px 1.46667px 3.25926px rgba(0, 0, 0, 0.0274815), 0px 0.333333px 1.57407px rgba(0, 0, 0, 0.0168519)"
+                        marginTop: 20
                         }}>
-                      <p>{guide.deliveryTimeFrame} Days Delivery</p>
-                      <RedoOutlined />
+                      <p>Price: ${guide.guideDailyCost} per day</p>
+                      <p>Delivery timeframe: {guide.deliveryTimeFrame} days</p>
+                      <div>
                       <p>2 revisions</p>
+                      </div>
                       <Link to={`/${guide.IDtag}/${paramsLocation.location}/${paramsTimeframe.timeframe}/confirmation`}>
-                        <Button>
-                          Book your trip with {guide.firstName} for {paramsLocation.location}
-                        </Button>
                       </Link>
                     </Card>
                   </Col>
