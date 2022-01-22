@@ -29,7 +29,7 @@ export function OrderConfirmation() {
   const [guideFirstName, setGuideFirstName] = useState<any>([]); 
   const [guideLocation, setGuideLocation] = useState<any>([]);  
   const [user1, setUser1] = useState<any>([]);
-  const [costPrice, setcostPrice] = useState<any>([45]);
+  const [costPrice, setcostPrice] = useState<any>([30]);
   const [daystoBook, setdaystoBook] = useState<any>([1]);
   const { Option } = Select;
   const paramsTimeframe = useParams<{timeframe?: any}>();

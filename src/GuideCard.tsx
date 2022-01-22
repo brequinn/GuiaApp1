@@ -142,7 +142,7 @@ import { UserOutlined } from "@ant-design/icons";
                 style={{ fontSize: "12px", fontWeight: "normal" }}
                 className="specialities"
               >
-                 <div dangerouslySetInnerHTML={{ __html: guide.groupSpecialities.replace(/Solo travelers/gi, '<span>Solo travelers</span>').replace(/Couples/gi, '<span>Couples</span>').replace(/families/gi, '<span>Families</span>').replace(',','') }} />
+                 <div dangerouslySetInnerHTML={{ __html: guide.groupSpecialities.replace(/Solo travelers/gi, '<span>Solo travelers</span>').replace(/Couples/gi, '<span>Couples</span>').replace(/families/gi, '<span>Families</span>').replace(/Friends/gi, '<span>Friends</span>').replace(',','') }} />
               </p>
             <h4
               style={{
@@ -158,7 +158,12 @@ import { UserOutlined } from "@ant-design/icons";
                       style={{ fontSize: "12px", fontWeight: "normal" }}
                       className="specialities1"
                       >
-                      <div dangerouslySetInnerHTML={{ __html: guide.guideActivities.replace(/Jazz clubs/gi, '<span>Jazz clubs</span>').replace(/Off the beaten path/gi, '<span>Off the beaten path</span>').replace(/museums/gi, '<span>Museums</span>').replace(/bars/gi, '<span>Bars</span>').replace(/breweries/gi, '<span>Breweries</span>').replace(/tours/gi, '<span>Tours</span>').replace(/hiking/gi, '<span>Hiking</span>').replace(',','') }} />
+                      <div dangerouslySetInnerHTML={{ __html: guide.guideActivities.replace(/Jazz clubs/gi, '<span>Jazz clubs</span>').replace(/Off the beaten path/gi, '<span>Off the beaten path</span>').replace(/museums/gi, '<span>Museums</span>').replace(/bars/gi, '<span>Bars</span>').replace(/breweries/gi, '<span>Breweries</span>').replace(/tours/gi, '<span>Tours</span>').replace(/hiking/gi, '<span>Hiking</span>')
+                       .replace(/local/gi, '<span>Local</span>')
+                       .replace(/coffee/gi, '<span>Coffee</span>')
+                       .replace(/food/gi, '<span>Food</span>')
+                       .replace(/off the beaten track/gi, '<span>Off the beaten track</span>')
+                      .replace(',','') }} />
                     </p>
           </Col>
           </Row>
