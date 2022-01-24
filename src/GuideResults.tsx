@@ -23,6 +23,7 @@ const [data1, setData] = useState<any>([]);
 const history = useHistory();
 const paramsTimeframe = useParams<{timeframe?: any}>();
 const paramsLocation = useParams<{location?: string}>();
+const paramsdailyCost = useParams<{dailycost?: string}>();
 
   async function getGuides() {
     const user = auth.currentUser;

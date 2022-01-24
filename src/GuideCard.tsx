@@ -21,6 +21,7 @@ import { UserOutlined } from "@ant-design/icons";
 
     const paramsTimeframe = useParams<{timeframe?: string}>();
     const paramsLocation = useParams<{location?: string}>();
+    const paramsdailyCost = useParams<{dailycost?: string}>();
     useEffect(() => {
     
   }, []);

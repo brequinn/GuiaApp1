@@ -32,9 +32,9 @@ return (
                 <Route path="/GuideTrips" component={GuideTripOverview} />
                 <Route path="/tripDetail/:tripid" component={GuideTripDetail} />
                 <Route path="/TripOverview/:tripid" component={TripOverview} />
-                <Route path="/searchResults/:location/:timeframe" component={GuideResults} />
-                <Route path="/guide/:guidename/:location/:timeframe" component={GuideDetail} />
-                <Route path="/:guidename/:location/:timeframe/confirmation" component={OrderConfirmation} />
+                <Route path="/searchResults/:location/:timeframe/" component={GuideResults} />
+                <Route path="/guide/:guidename/:location/:timeframe/" component={GuideDetail} />
+                <Route path="/:guidename/:location/:timeframe/:dailycost/confirmation" component={OrderConfirmation} />
                 </Route>
             </BrowserRouter>  
              

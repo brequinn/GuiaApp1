@@ -29,11 +29,14 @@ export function OrderConfirmation() {
   const [guideFirstName, setGuideFirstName] = useState<any>([]); 
   const [guideLocation, setGuideLocation] = useState<any>([]);  
   const [user1, setUser1] = useState<any>([]);
-  const [costPrice, setcostPrice] = useState<any>([30]);
   const [daystoBook, setdaystoBook] = useState<any>([1]);
   const { Option } = Select;
   const paramsTimeframe = useParams<{timeframe?: any}>();
 const paramsLocation = useParams<{location?: string}>();
+const paramsdailyCost = useParams<{dailycost?: any}>();
+const [costPrice, setcostPrice] = useState<any>([]);
+const [feecostPrice, setfeecostPrice] = useState<any>([]);
+const [totalcostPrice, settotalcostPrice] = useState<any>([]);
   
 
   var uniqid = Date.now();
@@ -45,10 +48,16 @@ const paramsLocation = useParams<{location?: string}>();
   useEffect(() => {
     auth.onAuthStateChanged(async function(user) {
       getGuideDetail();
-    console.log(JSON.stringify(data1));
+      // console.log(JSON.stringify(data1));
+    {data1.map((guide: any) => (
+     setcostPrice(guide.guideDailyCost)
+      ))} 
+    
     moment(paramsTimeframe.timeframe).format('MMMM Do YYYY, h:mm:ss a');
   });
-}, []);
+  feecostPriceCalculations();
+  totalcostPriceCalculations();
+}, );
 
     function getGuideDetail() {
       auth.onAuthStateChanged(async function(user) {
@@ -60,6 +69,8 @@ const paramsLocation = useParams<{location?: string}>();
     setData(result);
   
       });
+  
+    // console.log(JSON.stringify(data1.guideDailyCost));
   }
 
   function more()
@@ -104,7 +115,16 @@ const paramsLocation = useParams<{location?: string}>();
   function onLocationChange1(value: any) {
     console.log(`selected ${value}`);
     setdaystoBook(value);
-    setcostPrice(value*45);
+    setcostPrice(value*costPrice);
+   
+  }
+
+  function feecostPriceCalculations() {
+    setfeecostPrice(costPrice*0.15);
+  }
+
+  function totalcostPriceCalculations() {
+    settotalcostPrice(costPrice + feecostPrice);
   }
 
   function onBlur() {
@@ -237,8 +257,8 @@ const paramsLocation = useParams<{location?: string}>();
         <Card >
       <p>Days to plan: {daystoBook} days</p>
       <p>Total booking price: ${costPrice}</p>
-      <p>Total marketplace fee (15%):</p>
-     
+      <p>Total marketplace fee (15%): ${feecostPrice}</p>
+      <p>Total cost: ${totalcostPrice}</p>
      
       <Link to="/MyTrips">
       <Button   type="primary"
@@ -265,6 +285,8 @@ const paramsLocation = useParams<{location?: string}>();
     </div>
             </div>
           </div>
+
+
    
        ))} 
       

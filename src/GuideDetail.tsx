@@ -26,6 +26,7 @@ export function GuideDetail() {
   const [data1, setData] = useState<any>([]);
   const [guideName, setName] = useState<any>([]);
   const paramsTimeframe = useParams<{timeframe?: string}>();
+  const paramsdailyCost = useParams<{dailycost?: string}>();
   const paramsLocation = useParams<{location?: string}>();
   const params = useParams<{guidename?: string}>();
   
@@ -42,6 +43,7 @@ export function GuideDetail() {
   useEffect(() => {
     getGuideDetail();
     console.log("printing the params " + params.guidename)
+    // console.log("printing the daily cost" + params.dailycost)
 }, []);
   
   return (
@@ -96,7 +98,7 @@ export function GuideDetail() {
                       }}/>
                
                     {/* END PLACEHOLDER */}
-                    <Button href={`/${guide.IDtag}/${paramsLocation.location}/${paramsTimeframe.timeframe}/confirmation`} className="buttonShadow" shape="round" size="large">Book trip with {guide.guideName.split(" ")[0]}</Button>
+                    <Button href={`/${guide.IDtag}/${paramsLocation.location}/${guide.guideDailyCost}/${paramsTimeframe.timeframe}/confirmation`} className="buttonShadow" shape="round" size="large">Book trip with {guide.guideName.split(" ")[0]}</Button>
                     {/* <Button className="buttonShadow" shape="circle" size="large"><HeartOutlined /></Button> */}
                 </div>
                 <Row
@@ -156,7 +158,7 @@ export function GuideDetail() {
                       <div>
                       <p>2 revisions</p>
                       </div>
-                      <Link to={`/${guide.IDtag}/${paramsLocation.location}/${paramsTimeframe.timeframe}/confirmation`}>
+                      <Link to={`/${guide.IDtag}/${paramsLocation.location}/${paramsdailyCost.dailycost}/${paramsTimeframe.timeframe}/confirmation`}>
                       </Link>
                     </Card>
                   </Col>
