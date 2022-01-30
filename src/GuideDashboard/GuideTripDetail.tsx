@@ -46,8 +46,9 @@ const params = useParams<{tripid?: string}>();
     <> 
     <Header />
     {data1.map((guide: any) => (
-   <div style={{marginLeft: 50}}>
+   <div style={{marginLeft: 50, width: 400}}>
    <h1>Trip Overview</h1>
+   <h5>To get started, learn more about your traveler by asking them about their travel plans, who they are traveling with, their budget, and their overall preferences</h5>
    <h3>Trip Location</h3>
    <h5>{guide.tripLocation}</h5>
    <h3>Timeframe</h3>
@@ -56,7 +57,7 @@ const params = useParams<{tripid?: string}>();
    <h5>{guide.travelerName}</h5>  
     <h3> Days booked</h3>
     <h5>{guide.tripDayLength} day(s)</h5>  
-    <h3> Your payment</h3>
+    <h3> Total cost</h3>
     <h5>${guide.tripCost}</h5>
     
 

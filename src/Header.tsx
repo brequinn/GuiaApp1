@@ -155,7 +155,7 @@ const authInstance = getAuth(firebaseApp);
           </Menu.Item>
                     <Menu.Item>
                       <a
-                        href="https://k1xwbgus479.typeform.com/to/MiAyKOXn"
+                        href="https://forms.gle/Bt6PcdEmng5Zozhu8"
                         target="_blank"
                         rel="noreferrer"
                       >

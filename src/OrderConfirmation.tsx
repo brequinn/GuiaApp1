@@ -35,7 +35,6 @@ export function OrderConfirmation() {
 const paramsLocation = useParams<{location?: string}>();
 const paramsdailyCost = useParams<{dailycost?: any}>();
 const [costPrice, setcostPrice] = useState<any>([]);
-const [feecostPrice, setfeecostPrice] = useState<any>([]);
 const [totalcostPrice, settotalcostPrice] = useState<any>([]);
   
 
@@ -55,8 +54,8 @@ const [totalcostPrice, settotalcostPrice] = useState<any>([]);
     
     moment(paramsTimeframe.timeframe).format('MMMM Do YYYY, h:mm:ss a');
   });
-  feecostPriceCalculations();
-  totalcostPriceCalculations();
+  // feecostPriceCalculations();
+  // totalcostPriceCalculations();
 }, );
 
     function getGuideDetail() {
@@ -119,13 +118,13 @@ const [totalcostPrice, settotalcostPrice] = useState<any>([]);
    
   }
 
-  function feecostPriceCalculations() {
-    setfeecostPrice(costPrice*0.15);
-  }
+  // function feecostPriceCalculations() {
+  //   setfeecostPrice(costPrice*0.15);
+  // }
 
-  function totalcostPriceCalculations() {
-    settotalcostPrice(costPrice + feecostPrice);
-  }
+  // function totalcostPriceCalculations() {
+  //   settotalcostPrice(costPrice + feecostPrice);
+  // }
 
   function onBlur() {
     console.log('blur');
@@ -211,7 +210,7 @@ const [totalcostPrice, settotalcostPrice] = useState<any>([]);
         <p>${guide.guideDailyCost} per day
     </p>
 
-    <p>3 days delivery
+    <p>{guide.deliveryTimeFrame} days delivery
     </p>
    
     <p>2 revisions
@@ -257,7 +256,6 @@ const [totalcostPrice, settotalcostPrice] = useState<any>([]);
         <Card >
       <p>Days to plan: {daystoBook} days</p>
       <p>Total booking price: ${costPrice}</p>
-      <p>Total marketplace fee (15%): ${feecostPrice}</p>
       <p>Total cost: ${totalcostPrice}</p>
      
       <Link to="/MyTrips">
