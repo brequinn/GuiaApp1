@@ -60,7 +60,7 @@ export function GuideDetail() {
                 alignItems: "center"
               }}
             >
-              <img style={{width: "100%" }} src={guide.photoURL}/>
+              <img style={{width: "100%" }} src={guide.photoBannerURL}/>
             </div>
             <div
               className="pageContent"
