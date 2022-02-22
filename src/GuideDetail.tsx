@@ -98,7 +98,7 @@ export function GuideDetail() {
                       }}/>
                
                     {/* END PLACEHOLDER */}
-                    <Button href={`/${guide.IDtag}/${paramsLocation.location}/${guide.guideDailyCost}/${paramsTimeframe.timeframe}/confirmation`} className="buttonShadow" shape="round" size="large">Book trip with {guide.guideName.split(" ")[0]}</Button>
+                    <Button href={`/${guide.IDtag}/${paramsLocation.location}/${guide.guideDailyCost}/${paramsTimeframe.timeframe}/confirmation`} className="buttonShadow" shape="round" size="large">Book trip with {guide.firstName.split(" ")[0]}</Button>
                     {/* <Button className="buttonShadow" shape="circle" size="large"><HeartOutlined /></Button> */}
                 </div>
                 <Row
@@ -135,6 +135,11 @@ export function GuideDetail() {
                        .replace(/coffee/gi, '<span>Coffee</span>')
                        .replace(/food/gi, '<span>Food</span>')
                        .replace(/off the beaten track/gi, '<span>Off the beaten track</span>')
+                       .replace(/hidden gems/gi, '<span>Hidden Gems</span>')
+                       .replace(/adventure/gi, '<span>Adventure</span>')
+                       .replace(/cultural experiences/gi, '<span>Cultural Experiences</span>')
+                       .replace(/night life/gi, '<span>Night Life</span>')
+                       .replace(/date spots/gi, '<span>Date Spots</span>')
                       .replace(',','') }} />
                     </p>
 

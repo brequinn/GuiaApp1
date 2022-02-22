@@ -164,6 +164,11 @@ import { UserOutlined } from "@ant-design/icons";
                        .replace(/coffee/gi, '<span>Coffee</span>')
                        .replace(/food/gi, '<span>Food</span>')
                        .replace(/off the beaten track/gi, '<span>Off the beaten track</span>')
+                       .replace(/hidden gems/gi, '<span>Hidden Gems</span>')
+                       .replace(/adventure/gi, '<span>Adventure</span>')
+                       .replace(/cultural experiences/gi, '<span>Cultural Experiences</span>')
+                       .replace(/night life/gi, '<span>Night Life</span>')
+                       .replace(/date spots/gi, '<span>Date Spots</span>')
                       .replace(',','') }} />
                     </p>
           </Col>
