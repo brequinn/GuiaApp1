@@ -160,6 +160,7 @@ import { UserOutlined } from "@ant-design/icons";
                       className="specialities1"
                       >
                       <div dangerouslySetInnerHTML={{ __html: guide.guideActivities.replace(/Jazz clubs/gi, '<span>Jazz clubs</span>').replace(/Off the beaten path/gi, '<span>Off the beaten path</span>').replace(/museums/gi, '<span>Museums</span>').replace(/bars/gi, '<span>Bars</span>').replace(/breweries/gi, '<span>Breweries</span>').replace(/tours/gi, '<span>Tours</span>').replace(/hiking/gi, '<span>Hiking</span>')
+            
                        .replace(/local/gi, '<span>Local</span>')
                        .replace(/coffee/gi, '<span>Coffee</span>')
                        .replace(/food/gi, '<span>Food</span>')
@@ -169,6 +170,9 @@ import { UserOutlined } from "@ant-design/icons";
                        .replace(/cultural experiences/gi, '<span>Cultural Experiences</span>')
                        .replace(/night life/gi, '<span>Night Life</span>')
                        .replace(/date spots/gi, '<span>Date Spots</span>')
+                       .replace(/local food finds/gi, '<span>Local food finds</span>')
+                       .replace(/cheap eats/gi, '<span>Cheap Eats</span>')
+                       .replace(/luxury meals/gi, '<span>Luxury Meals</span>')
                       .replace(',','') }} />
                     </p>
           </Col>

@@ -140,6 +140,10 @@ export function GuideDetail() {
                        .replace(/cultural experiences/gi, '<span>Cultural Experiences</span>')
                        .replace(/night life/gi, '<span>Night Life</span>')
                        .replace(/date spots/gi, '<span>Date Spots</span>')
+                       .replace(/local food/gi, '<span>Local food</span>')
+                       .replace(/date spots/gi, '<span>Date Spots</span>')
+                       .replace(/cheap eats/gi, '<span>Cheap Eats</span>')
+                       .replace(/luxury meals/gi, '<span>Luxury Meals</span>')
                       .replace(',','') }} />
                     </p>
 
