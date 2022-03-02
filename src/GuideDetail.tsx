@@ -121,7 +121,16 @@ export function GuideDetail() {
                       style={{ fontSize: "12px", fontWeight: "normal" }}
                       className="specialities"
                       >
-                      <div dangerouslySetInnerHTML={{ __html: guide.groupSpecialities.replace(/Solo travelers/gi, '<span>Solo travelers</span>').replace(/Couples/gi, '<span>Couples</span>').replace(/families/gi, '<span>Families</span>').replace(/friends/gi, '<span>Friends</span>').replace(',','') }} />
+                      <div dangerouslySetInnerHTML={{ __html: guide.groupSpecialities
+                    .replace(/Solo travelers/gi, '<span>Solo travelers</span>')
+                    .replace(/Girl Groups/gi, '<span>Girl Groups</span>')
+                    .replace(/Ladies weekend/gi, '<span>Ladies weekend</span>')
+                    .replace(/Couples/gi, '<span>Couples</span>')
+                    .replace(/Friends & Groups/gi, '<span>Friends & Groups</span>')
+                    .replace(/Self Care/gi, '<span>Self Care</span>')
+                    .replace(/special occasions/gi, '<span>Special Occasions</span>')
+                    .replace(/families/gi, '<span>Families</span>')
+                    .replace(/Friends/gi, '<span>Friends</span>').replace(',','') }} />
                     </p>
                     <p>I specialize in these activities:</p>
                 
@@ -133,6 +142,8 @@ export function GuideDetail() {
                       <div dangerouslySetInnerHTML={{ __html: guide.guideActivities.replace(/Jazz clubs/gi, '<span>Jazz clubs</span>').replace(/Off the beaten path/gi, '<span>Off the beaten path</span>').replace(/museums/gi, '<span>Museums</span>').replace(/bars/gi, '<span>Bars</span>').replace(/breweries/gi, '<span>Breweries</span>').replace(/tours/gi, '<span>Tours</span>').replace(/hiking/gi, '<span>Hiking</span>')
                        .replace(/local/gi, '<span>Local</span>')
                        .replace(/coffee/gi, '<span>Coffee</span>')
+                       .replace(/outdoors/gi, '<span>Outdoors</span>')
+                       .replace(/tourism/gi, '<span>Tourism</span>')
                        .replace(/food/gi, '<span>Food</span>')
                        .replace(/off the beaten track/gi, '<span>Off the beaten track</span>')
                        .replace(/hidden gems/gi, '<span>Hidden Gems</span>')
@@ -143,6 +154,8 @@ export function GuideDetail() {
                        .replace(/local food/gi, '<span>Local food</span>')
                        .replace(/date spots/gi, '<span>Date Spots</span>')
                        .replace(/cheap eats/gi, '<span>Cheap Eats</span>')
+                       .replace(/landmarks/gi, '<span>Landmarks</span>')
+                       .replace(/nature/gi, '<span>Nature</span>')
                        .replace(/luxury meals/gi, '<span>Luxury Meals</span>')
                       .replace(',','') }} />
                     </p>

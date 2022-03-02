@@ -143,7 +143,16 @@ import { UserOutlined } from "@ant-design/icons";
                 style={{ fontSize: "12px", fontWeight: "normal" }}
                 className="specialities"
               >
-                 <div dangerouslySetInnerHTML={{ __html: guide.groupSpecialities.replace(/Solo travelers/gi, '<span>Solo travelers</span>').replace(/Couples/gi, '<span>Couples</span>').replace(/families/gi, '<span>Families</span>').replace(/Friends/gi, '<span>Friends</span>').replace(',','') }} />
+                 <div dangerouslySetInnerHTML={{ __html: guide.groupSpecialities
+                 .replace(/Solo travelers/gi, '<span>Solo travelers</span>')
+                 .replace(/Girl Groups/gi, '<span>Girl Groups</span>')
+                 .replace(/Ladies weekend/gi, '<span>Ladies weekend</span>')
+                 .replace(/Couples/gi, '<span>Couples</span>')
+                 .replace(/Friends & Groups/gi, '<span>Friends & Groups</span>')
+                 .replace(/Self Care/gi, '<span>Self Care</span>')
+                 .replace(/special occasions/gi, '<span>Special Occasions</span>')
+                 .replace(/families/gi, '<span>Families</span>')
+                 .replace(/Friends/gi, '<span>Friends</span>').replace(',','') }} />
               </p>
             <h4
               style={{
